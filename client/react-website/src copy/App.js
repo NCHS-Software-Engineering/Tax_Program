@@ -9,21 +9,21 @@ import {
 } from "react-router-dom";
 import Home from "./pages";
 import About from "./pages/About";
-import Blogs from "./pages/Help";
+import Help from "./pages/Help";
 import Contact from "./pages/Contact";
  
-/*function App() {
+function App() {
     return (
         <Router>
             <Navbar />
             <Routes>
                 <Route exact path="/" element={<Home />} />
-                <Route path="/about" element={<About />} />
+                <Route path="/About" element={<About />} />
                 <Route
-                    path="/contact"
+                    path="/Contact"
                     element={<Contact />}
                 />
-                <Route path="/blogs" element={<Help />} />
+                <Route path="/Help" element={<Help />} />
             </Routes>
         </Router>
     );
@@ -31,7 +31,7 @@ import Contact from "./pages/Contact";
  
 export default App;
 
-*/function App() {
+/*function App() {
   return (
     <div className="App">
       <header className="App-header">
@@ -52,4 +52,4 @@ export default App;
   );
 }
 
-export default App;
+export default App;*/
