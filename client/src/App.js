@@ -6,6 +6,10 @@ function App() {
     <body>
       <div className="App">
         <header className="App-header">
+          
+            <title className = "App-title">Tax Program</title>
+            
+       
           <img src={Fiscal} className="App-logo" alt="logo" />
           <p>
             Edit <code>src/App.js</code> and save to reload.

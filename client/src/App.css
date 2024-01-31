@@ -23,6 +23,14 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+
+  .App-title {
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@800&display=swap');
+    font-family: 'Playfair Display', serif;
+    
+  }
+  
+
   
 }
 
@@ -39,6 +47,5 @@
   }
 }
 
-/* <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,800&display=swap" rel="stylesheet">*/
+
+
