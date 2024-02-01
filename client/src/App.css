@@ -9,30 +9,39 @@
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .App-logo {
+  .App-logo-left {
     animation: App-logo-spin infinite 20s linear;
+  
+    #left {
+      object-position: top left; 
+    }
+  }
+  .App-logo-right {
+    animation: App-logo-spin infinite 20s lineasar;
+
   }
 }
+
 
 .App-header {
   background-color: rgb(40, 119, 93);
-  min-height: 100vh;
+  min-height: 200vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: top;
   font-size: calc(10px + 2vmin);
   color: white;
 
-  .App-title {
-    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@800&display=swap');
-    font-family: 'Playfair Display', serif;
-    
-  }
-  
+
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@800&display=swap');
+  font-family: 'Playfair Display', serif;
 
   
+  
 }
+
+
 
 .App-link {
   color: #61dafb;

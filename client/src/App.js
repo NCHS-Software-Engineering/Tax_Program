@@ -1,4 +1,4 @@
-import Fiscal from './Fiscal.png';
+import Logo from './logo.png';
 import './App.css';
 
 function App() {
@@ -7,15 +7,12 @@ function App() {
       <div className="App">
         <header className="App-header">
           
-            <title className = "App-title">Tax Program</title>
-            
-       
-          <img src={Fiscal} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-        
+            <h1>Tax Program</h1>
           
+          <img src={Logo} className="App-logo-left" alt="logo" />
+          <img src={Logo} className="App-logo-right" alt="logo" />
+          
+        
         </header>
       </div>
     </body>
