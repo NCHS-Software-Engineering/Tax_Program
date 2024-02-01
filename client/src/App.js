@@ -1,37 +1,83 @@
-import logo from './logo.png';
 import './App.css';
-import React from "react";
-import Navbar from "./components/Navbar";
+import React, { Component } from "react";
 import {
     BrowserRouter as Router,
     Routes,
     Route,
+    Link,
 } from "react-router-dom";
-import Home from "./pages";
-import About from "./pages/About";
-import Blogs from "./pages/Help";
+import Home from "./pages/Home";
+import About from "./pages/AboutUs";
 import Contact from "./pages/Contact";
+import Help from "./pages/Help";
+import "./App.css";
  
-/*function App() {
-    return (
-        <Router>
-            <Navbar />
-            <Routes>
-                <Route exact path="/" element={<Home />} />
-                <Route path="/about" element={<About />} />
-                <Route
-                    path="/contact"
-                    element={<Contact />}
-                />
-                <Route path="/blogs" element={<Help />} />
-            </Routes>
-        </Router>
-    );
+class App extends Component {
+    render() {
+        return (
+            <Router>
+                <div className="App">
+                    <ul className="App-header">
+                        <li>
+                            <Link to="/">Home</Link>
+                        </li>
+                        <li>
+                            <Link to="/about">
+                                About Us
+                            </Link>
+                        </li>
+                        <li>
+                            <Link to="/contact">
+                                Contact Us
+                            </Link>
+                        </li>
+                    </ul>
+                    <Routes>
+                        <Route
+                            exact
+                            path="/"
+                            element={<Home />}
+                        ></Route>
+                        <Route
+                            exact
+                            path="/about"
+                            element={<About />}
+                        ></Route>
+                        <Route
+                            exact
+                            path="/contact"
+                            element={<Contact />}
+                        ></Route>
+                    </Routes>
+                </div>
+                <form>
+  <div>
+    <label for="income">Annual income (0-100k):</label>
+    <input
+      id="income"
+      type="number"
+      name="income"
+      min="0"
+      max="100"
+      required />
+    <span class="validity"></span>
+  </div>
+  <div>
+    <input type="submit" />
+  </div>
+</form>
+
+
+            </Router>
+            
+        );
+    }
 }
  
 export default App;
 
-*/function App() {
+
+/*function App() {
   return (
     <div className="App">
       <header className="App-header">
@@ -47,9 +93,13 @@ export default App;
         >
           Learn React
         </a>
+        <input
+            type="text"
+            value={this.state.value}
+            onChange={this.handleChange}
+         />
       </header>
     </div>
   );
 }
-
-export default App;
+*/
