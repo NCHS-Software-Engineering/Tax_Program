@@ -12,9 +12,7 @@
   .App-logo-left {
     animation: App-logo-spin infinite 20s linear;
   
-    #left {
-      object-position: top left; 
-    }
+    
   }
   .App-logo-right {
     animation: App-logo-spin infinite 20s lineasar;
@@ -36,6 +34,12 @@
 
   @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@800&display=swap');
   font-family: 'Playfair Display', serif;
+
+  #left {
+    object-position: top left; 
+    height: 100px; 
+    width: 100px;
+  }
 
   
   

@@ -9,8 +9,8 @@ function App() {
           
             <h1>Tax Program</h1>
           
-          <img src={Logo} className="App-logo-left" alt="logo" />
-          <img src={Logo} className="App-logo-right" alt="logo" />
+          <img id = "left" src={Logo} className = "App-logo-left" alt="logo" />
+          <img id = "right" src={Logo} className="App-logo-right" alt="logo" />
           
         
         </header>
