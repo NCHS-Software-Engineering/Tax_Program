@@ -9,11 +9,11 @@ function App() {
           
             <h1>Tax Program</h1>
           
-          <img id = "left" src={Logo} className = "App-logo-left" alt="logo" />
-          <img id = "right" src={Logo} className="App-logo-right" alt="logo" />
           
         
         </header>
+        <img id = "left" src={Logo} className = "App-logo-left" alt="logo" />
+          <img id = "right" src={Logo} className="App-logo-right" alt="logo" />
       </div>
     </body>
   );
