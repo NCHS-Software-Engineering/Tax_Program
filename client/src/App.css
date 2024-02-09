@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@800&display=swap');
 
 .App {
   text-align: center;
@@ -33,7 +34,7 @@
 
   h1 {
 
-    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@800&display=swap');
+   
     font-family: 'Playfair Display', serif;
     color: black; 
     text-align: center;
@@ -41,20 +42,31 @@
     font-size: 80px;
   
   }
-  
+
+  #left 
+  {
+  float: left;
+  justify-content: top;
+  height: 50px; 
+  width: 40px;
+  }
+
+  #right {
+  float: top right; 
+ 
+  height: 50px; 
+  width: 40px;
+  }
+
   
   
 }
 
-left.App-logo-left {
-  justify-content: top;
-  align-items: left;
-  
-}
-
-right.App-logo-right {
-  justify-content: top;
-  align-items: right;
+table {
+  border: 2px solid black; 
+  width: 500px; 
+  height: 500px; 
+  float: right; 
 }
 
 
