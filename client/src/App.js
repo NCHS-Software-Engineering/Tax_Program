@@ -1,5 +1,13 @@
 import Logo from './logo.png';
 import './App.css';
+import React from "react"; 
+import Navbar from "./components/Navbar"; 
+import {
+  BrowserRouter as Router, 
+  Routes, 
+  Route, 
+} from "react-router-dom"; 
+import About from "./pages/about"; 
 
 
 function App() {
@@ -8,10 +16,9 @@ function App() {
       <div className="App">
         <header className="App-header">
           
-            <h1>Tax Program</h1>
-            <img id = "left" src={Logo} alt="logo" />
-            <img id = "right" src={Logo} alt="logo" />
-
+      
+            <img id = "logo" src={Logo} alt="logo" />
+           
           <div className = "Tax brackers"> 
             <table> 
             <tr> 
