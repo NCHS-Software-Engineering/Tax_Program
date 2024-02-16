@@ -12,8 +12,3 @@ code {
     monospace;
 }
 
-#left {
-  object-position: left top; 
-  height: 300px; 
-  width: 300px;
-}
