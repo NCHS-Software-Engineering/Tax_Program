@@ -22,9 +22,9 @@ connection.connect((err) =>
   }
 })
 
-
+ 
 app.get('/', (req, res) => {
-    res.json({message: "Hello from server!"})
+    const sql = 'SELECT Min, Max, HeadHousehold, Single, MarriedSeperately, MarriedJointly FROM Tax'; 
     connection.query(sql, (err, data) => {
         if (err) return res.json(err);  
         return res.json(data); 
@@ -35,3 +35,4 @@ app.listen(8000, () => {
     console.log(`Server running on port 8000.`)
 })
 
+/*https://www.irs.gov/pub/irs-prior/i1040tt--2023.pdf*/

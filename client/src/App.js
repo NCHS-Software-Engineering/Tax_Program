@@ -1,7 +1,7 @@
 import Logo from './logo.png';
 import './App.css';
 import React from "react"; 
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 
 async function postData(url = "", data = {}) {
   // Default options are marked with *
@@ -24,11 +24,11 @@ async function postData(url = "", data = {}) {
 function App() {
 
   const baseURL = "http://localhost:3000/";
-  const[income, setIncome] = useState([]); 
+  const[incomes, setIncomes] = useState([]); 
   useEffect(() => {
-    fetch(`${baseURL}branches`)
+    fetch(`${baseURL}`)
       .then((res) => res.json())
-      .then((data) => {setBranches(data);}
+      .then((data) => {setIncomes(data);}
       );
   }, []);
 
@@ -47,14 +47,29 @@ function App() {
            
           <div className = "Tax brackers"> 
             <table> 
+            <thead>
             <tr> 
               <th>Minimum Income</th>
               <th>Maximum Income</th>
-              <th>Household Status</th>
+              <th>Head of HouseHold</th>
+              <th>Single</th>
+              <th>Married Filing Seperately</th>
+              <th>Married Filing Jointly</th>
             </tr>
+            </thead>
+            <tbody>
             {
-              
-            }
+              incomes.map((income, index) => (
+              <tr key={index}>
+                <td> {income.Min} </td>
+                <td> {income.Max} </td>
+                <td> {income.HeadHousehold} </td>
+                <td> {income.Single} </td>
+                <td> {income.MarriedSeperately} </td>
+                <td> {income.MarriedJointly} </td>
+              </tr>
+            ))}
+            </tbody>
             </table> 
         
           </div>
