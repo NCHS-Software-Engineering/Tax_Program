@@ -38,10 +38,13 @@ function App() {
 
 
   return (
+    
   
       <div className="App">
         <header className="App-header">
-          
+        <div>
+          <Income />
+        </div>
       
             <img id = "logo" src={Logo} alt="logo" />
            
