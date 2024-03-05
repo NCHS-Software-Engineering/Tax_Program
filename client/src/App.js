@@ -2,6 +2,7 @@ import Logo from './logo.png';
 import './App.css';
 import React from "react"; 
 import { useState, useEffect } from "react";
+import Income from './components/IncomeMain/income.jsx';
 
 async function postData(url = "", data = {}) {
   // Default options are marked with *
@@ -42,9 +43,7 @@ function App() {
   
       <div className="App">
         <header className="App-header">
-        <div>
-          <Income />
-        </div>
+       
       
             <img id = "logo" src={Logo} alt="logo" />
            
@@ -74,6 +73,9 @@ function App() {
             ))}
             </tbody>
             </table> 
+            <div>
+              <Income />
+            </div>
         
           </div>
         </header>

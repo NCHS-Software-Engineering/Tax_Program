@@ -31,6 +31,14 @@ app.get('/', (req, res) => {
       })
 })
 
+app.get('/income_single', (req, res) => {
+  const sql = 'SET @var1 = 10;'
+  + 'SELECT Single FROM `Tax` WHERE @var1 >= Min AND @var1 < Max';
+  connection.query(sql, (err, data) => {
+    if (err) return res.json(err);  
+    return res.json(data); 
+})
+
 app.listen(8000, () => {
     console.log(`Server running on port 8000.`)
 })
