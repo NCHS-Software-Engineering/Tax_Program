@@ -32,7 +32,7 @@ function App() {
       .then((data) => {setIncomes(data);}
       );
   }, []);
-
+  
 
 
 

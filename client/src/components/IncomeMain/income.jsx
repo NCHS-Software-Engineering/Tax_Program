@@ -1,24 +1,49 @@
 //import logo from '../images/logo.png';
-import React, { useState } from "react";
+import { useState, useEffect } from "react";
 import './income.css';
 
-function Income() {
+function Income(err, Result, Fields) {
+
+  const baseURL = "http://localhost:8000/";
+  const[incomes, setIncomes] = useState([]); 
+  useEffect(() => {
+    fetch(`${baseURL}`)
+      .then((res) => res.json())
+      .then((data) => {setIncomes(data);}
+      );
+  }, []);
+
   const [getIncome, setIncome] = useState('');  
   const [getStatus, setStatus] = useState(''); 
   const [getTax, setTax] = useState('');
 
   function Tax(props){
-    /*
-    if(getStatus === "Head" && getIncome < 15700)
-      props.setTax((getIncome/9.97506234414)-getIncome/9.97506234414%1)
-    else
-      props.setTax(getIncome)
-    */
-   useEffect(() => {
-    if (getStatus){
-      fetch(``)
+    
+    let val = getIncome;
+    for(let i = 0; incomes.Min; i++)
+    {
+      if(val < incomes.Max[i] & val > incomes.Min[i]){
+        if(getStatus === "Head"){
+          val = incomes.HeadHouseHold[i]
+         }
+        else if(getStatus === "Head"){
+         val = incomes.Single[i]
+          }
+        else if(getStatus === "Head"){
+          val = incomes.MarriedSeperately[i]
+          }
+        else if(getStatus === "Head"){
+          val = incomes.MarriedJointly[i]
+          }
+        else {
+          val = 200
+        }
+        break
+      }
     }
-   })
+    //document.write(incomes.HeadHouseHold[i])
+
+      props.setTax(val)
 
   }
 
