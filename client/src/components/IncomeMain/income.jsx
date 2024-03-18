@@ -1,17 +1,29 @@
 //import logo from '../images/logo.png';
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import './income.css';
 
 function Income(err, Result, Fields) {
+  const [getTaxes, setTaxes] = useState('')
 
   const baseURL = "http://localhost:8000/";
-  const[incomes, setIncomes] = useState([]); 
-  useEffect(() => {
-    fetch(`${baseURL}`)
-      .then((res) => res.json())
-      .then((data) => {setIncomes(data);}
-      );
-  }, []);
+
+  const [selected, setSelected] = useState(null);
+
+  useEffect(()=>{
+    console.log('getting Taxes')
+    if (selected && selected.value){
+      console.log(`getting movies for ${selected.value}`)
+      fetch(`${baseURL}movies?branch=${selected.value}`)
+      .then(response => response.json())
+      .then(data => {
+      console.log('Received data:', data); 
+      setTaxes(data); 
+      })
+      .catch(error => console.error('Error fetching data', error));
+    }
+
+  }, [selected]);
+
 
   const [getIncome, setIncome] = useState('');  
   const [getStatus, setStatus] = useState(''); 
@@ -19,31 +31,18 @@ function Income(err, Result, Fields) {
 
   function Tax(props){
     
-    let val = getIncome;
-    for(let i = 0; incomes.Min; i++)
-    {
-      if(val < incomes.Max[i] & val > incomes.Min[i]){
-        if(getStatus === "Head"){
-          val = incomes.HeadHouseHold[i]
-         }
-        else if(getStatus === "Head"){
-         val = incomes.Single[i]
-          }
-        else if(getStatus === "Head"){
-          val = incomes.MarriedSeperately[i]
-          }
-        else if(getStatus === "Head"){
-          val = incomes.MarriedJointly[i]
-          }
-        else {
-          val = 200
-        }
-        break
-      }
-    }
-    //document.write(incomes.HeadHouseHold[i])
+   
 
-      props.setTax(val)
+    /*getTaxes.map((Tax) => React.createElement('tr', {key: Tax, className: 'tax item'}, 
+    React.createElement('td', {}, Tax.Min), 
+    React.createElement('td', {}, Tax.Max), 
+    React.createElement('td', {}, Tax.HeadHouseHold), 
+    React.createElement('td', {}, Tax.Single), 
+    React.createElement('td', {}, Tax.MarriedJointly), 
+    React.createElement('td', {}, Tax.MarriedSeperatly), 
+    ))*/
+
+      props.setTax(getIncome)
 
   }
 
