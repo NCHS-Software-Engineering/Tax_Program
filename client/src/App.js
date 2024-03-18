@@ -50,24 +50,6 @@ class App extends Component {
                         ></Route>
                     </Routes>
                 </div>
-                <form>
-  <div>
-    <label for="income">Annual income (0-100k):</label>
-    <input
-      id="income"
-      type="number"
-      name="income"
-      min="0"
-      max="100"
-      required />
-    <span class="validity"></span>
-  </div>
-  <div>
-    <input type="submit" />
-  </div>
-</form>
-
-
             </Router>
             
         );
