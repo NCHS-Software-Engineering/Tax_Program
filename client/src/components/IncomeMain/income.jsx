@@ -4,25 +4,13 @@ import './income.css';
 
 function Income(err, Result, Fields) {
   const [getTaxes, setTaxes] = useState('')
-
   const baseURL = "http://localhost:8000/";
-
-  const [selected, setSelected] = useState(null);
-
-  useEffect(()=>{
-    console.log('getting Taxes')
-    if (selected && selected.value){
-      console.log(`getting movies for ${selected.value}`)
-      fetch(`${baseURL}movies?branch=${selected.value}`)
-      .then(response => response.json())
-      .then(data => {
-      console.log('Received data:', data); 
-      setTaxes(data); 
-      })
-      .catch(error => console.error('Error fetching data', error));
-    }
-
-  }, [selected]);
+  useEffect(() => {
+    fetch(`${baseURL}`)
+      .then((res) => res.json())
+      .then((data) => {setTaxes(data);}
+      );
+  }, []);
 
 
   const [getIncome, setIncome] = useState('');  
@@ -31,18 +19,25 @@ function Income(err, Result, Fields) {
 
   function Tax(props){
     
-   
 
-    /*getTaxes.map((Tax) => React.createElement('tr', {key: Tax, className: 'tax item'}, 
-    React.createElement('td', {}, Tax.Min), 
-    React.createElement('td', {}, Tax.Max), 
-    React.createElement('td', {}, Tax.HeadHouseHold), 
-    React.createElement('td', {}, Tax.Single), 
-    React.createElement('td', {}, Tax.MarriedJointly), 
-    React.createElement('td', {}, Tax.MarriedSeperatly), 
+    /*const taxes = getTaxes.map((Tax) => ({key: Tax}
+      (Tax.Min)
+      (Tax.Max)
+      (Tax.HeadHouseHold)
+      (Tax.Single)
+      (Tax.MarriedJointly)
+      (Tax.marriedSeperatly)
+    ))
+    getTaxes.map((Tax) => React.createElement({key: Tax, className: 'tax item'}, 
+    React.createElement( {}, Tax.Min), 
+    React.createElement( {}, Tax.Max), 
+    React.createElement( {}, Tax.HeadHouseHold), 
+    React.createElement( {}, Tax.Single), 
+    React.createElement( {}, Tax.MarriedJointly), 
+    React.createElement( {}, Tax.MarriedSeperatly), 
     ))*/
 
-      props.setTax(getIncome)
+      //props.setTax(taxes.get(25))
 
   }
 
