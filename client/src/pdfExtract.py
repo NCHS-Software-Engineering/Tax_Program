@@ -1,21 +1,30 @@
 import requests 
 from bs4 import BeautifulSoup
+from csv import writer 
 
 url = "https://www.irs.gov/publications/p17#d0e50213"
 page = requests.get(url).text
 
 soup = BeautifulSoup(page, 'html.parser')
-results = soup.find('tbody')
+tables = soup.find_all("table")
+#results = soup.find('table', class_='table table-condensed')
+results = tables[-13]
 
-data = [] 
+with open('tax.csv', 'w', encoding = 'utf8') as f:
+    thewriter = writer(f)
 
-for row in results.find_all('tr'): 
-    cols = row.find_all('td')
-    if len(cols) == 0: 
-        cols = row.find_all('th')
+    data = [] 
 
-    cols = [ele.text.strip() for ele in cols]
-    data.append([ele for ele in cols if ele]) #gets rid of empty values
+    for row in results.find_all('tr'): 
+        cols = row.find_all('td')
+        if len(cols) == 0: 
+            cols = row.find_all('th')
 
-print(data)
+        cols = [ele.text.strip() for ele in cols]
+        if (len(cols) == 6):
+            data.append([ele for ele in cols if ele]) #gets rid of empty values
+            thewriter.writerow(data)
+            headers = data.pop(0)
+        
+
 
