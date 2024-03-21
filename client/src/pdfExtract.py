@@ -14,17 +14,24 @@ with open('tax.csv', 'w', encoding = 'utf8') as f:
     thewriter = writer(f)
 
     data = [] 
+    first_row_skipped = False
 
-    for row in results.find_all('tr'): 
+    for row in results.find_all('tr'):
         cols = row.find_all('td')
         if len(cols) == 0: 
             cols = row.find_all('th')
-
+      
         cols = [ele.text.strip() for ele in cols]
         if (len(cols) == 6):
             data.append([ele for ele in cols if ele]) #gets rid of empty values
-            thewriter.writerow(data)
-            headers = data.pop(0)
+            if first_row_skipped == True: 
+                thewriter.writerow(data)
+                headers = data.pop(0)
+            else: 
+                headers = data.pop(0)
+                first_row_skipped = True
+
+    
         
 
 
