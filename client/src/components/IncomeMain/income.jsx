@@ -3,8 +3,11 @@ import React, { useState, useEffect } from "react";
 import './income.css';
 
 function Income(err, Result, Fields) {
-  const [getTaxes, setTaxes] = useState('')
+
+  const [getTaxes, setTaxes] = useState([])
+
   const baseURL = "http://localhost:8000/";
+
   useEffect(() => {
     fetch(`${baseURL}`)
       .then((res) => res.json())
@@ -13,21 +16,38 @@ function Income(err, Result, Fields) {
   }, []);
 
 
+
+  
   const [getIncome, setIncome] = useState('');  
-  const [getStatus, setStatus] = useState(''); 
+  const [getStatus, setStatus] = useState('');  
   const [getTax, setTax] = useState('');
 
   function Tax(props){
-    
 
-    /*const taxes = getTaxes.map((Tax) => ({key: Tax}
-      (Tax.Min)
-      (Tax.Max)
-      (Tax.HeadHouseHold)
-      (Tax.Single)
-      (Tax.MarriedJointly)
+    var key; 
+
+    let Map = getTaxes.map(({Min, Max, H, S, MS, MJ}) => ({Min, Max, H, S, MS, MJ}
+        /*(income.Min)
+        (income.Max)
+        (income.HeadHousehold) 
+        (income.Single)
+        (income.MarriedSeperately)
+        (income.MarriedJointly)*/
+        )
+      )
+      
+
+    //alert(getTaxes)
+
+    /*var taxes = getTaxes.map((Tax) => ({key: Tax.Min}
+      (Tax.Min),
+      (Tax.Max),
+      (Tax.HeadHouseHold),
+      (Tax.Single),
+      (Tax.MarriedJointly),
       (Tax.marriedSeperatly)
-    ))
+      ))
+    /*
     getTaxes.map((Tax) => React.createElement({key: Tax, className: 'tax item'}, 
     React.createElement( {}, Tax.Min), 
     React.createElement( {}, Tax.Max), 
@@ -54,7 +74,7 @@ function Income(err, Result, Fields) {
               
               <StatusForm setStatus = {setStatus}/>
               
-              <Tax setTax = {setTax}/>
+              <Tax getTaxes = {getTaxes}/>
               <p4>Your tax amount is {getTax}$</p4>
           </body>
         </div>
