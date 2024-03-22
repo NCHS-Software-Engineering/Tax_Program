@@ -1,5 +1,6 @@
 const express = require('express');
 const cors = require('cors');
+const csvtojson = require('csvtojson'); 
 
 const app = express();
 app.use(cors());
@@ -22,6 +23,42 @@ connection.connect((err) =>
   }
 })
 
+
+const fileName = "tax.csv"; 
+
+csvtojson().fromFile(fileName).then(source => {
+  
+  for (var i = 0; i < source.length; i++) {
+    var Min = source[i]["Min"], 
+        Max = source[i]["Max"], 
+        HeadHousehold = source[i]["HeadHousehold"], 
+        Single = source[i]["Single"],
+        MarriedSeperately = source[i]["MarriedSeperately"],
+        MarriedJointly = source[i]["MarriedJointly"]
+
+        
+    var insertStatement = 
+    `INSERT INTO Tax values(?,?,?,?,?,?)`; 
+    var items = [Min, Max, HeadHousehold, Single, MarriedSeperately, MarriedJointly]; 
+
+    if (items === null) {
+      console.log('value is null'); 
+    }
+    else { connection.query(insertStatement, items, 
+      (err, results, fields) => {
+        if (err) {
+          console.log(
+            "Unable to insert item at row ", i+1); 
+              return console.log(err); 
+        }
+      }); }
+   
+  }
+  console.log(
+    "All items stored into database successfully");
+ 
+}); 
+
  
 app.get('/', (req, res) => {
     const sql = 'SELECT Min, Max, HeadHousehold, Single, MarriedSeperately, MarriedJointly FROM Tax'; 
@@ -29,14 +66,6 @@ app.get('/', (req, res) => {
         if (err) return res.json(err);  
         return res.json(data); 
       })
-})
-
-app.get('/income_single', (req, res) => {
-  const sql = 'SET @var1 = 10;'
-  + 'SELECT Single FROM `Tax` WHERE @var1 >= Min AND @var1 < Max';
-  connection.query(sql, (err, data) => {
-    if (err) return res.json(err);  
-    return res.json(data); 
 })
 
 app.listen(8000, () => {
