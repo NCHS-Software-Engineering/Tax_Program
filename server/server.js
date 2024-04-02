@@ -28,7 +28,9 @@ const fileName = "tax.csv";
 
 csvtojson().fromFile(fileName).then(source => {
   
+  console.log("1");
   for (var i = 0; i < source.length; i++) {
+    console.log(source[i])
     var Min = source[i]["Min"], 
         Max = source[i]["Max"], 
         HeadHousehold = source[i]["HeadHousehold"], 
@@ -37,6 +39,7 @@ csvtojson().fromFile(fileName).then(source => {
         MarriedJointly = source[i]["MarriedJointly"]
 
         
+    console.log(2);
     var insertStatement = 
     `INSERT INTO Tax values(?,?,?,?,?,?)`; 
     var items = [Min, Max, HeadHousehold, Single, MarriedSeperately, MarriedJointly]; 
