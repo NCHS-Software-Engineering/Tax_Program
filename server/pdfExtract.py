@@ -9,7 +9,7 @@ soup = BeautifulSoup(page, 'html.parser')
 tables = soup.find_all("table")
 results = tables[-13]
 
-with open('server/tax.csv', 'w', encoding = 'utf8') as f:
+with open('server/tax.csv', 'w', newline = '',encoding = 'utf8') as f:
     thewriter = writer(f)
 
     data = [] 
