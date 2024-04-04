@@ -54,6 +54,10 @@ table {
   width: 500px; 
   height: 500px; 
   float: right; 
+
+  .simplebar-scrollbar::before {
+    background: purple;
+  }
 }
 
 th {
