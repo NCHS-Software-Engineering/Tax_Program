@@ -21,7 +21,7 @@ with open('server/tax.csv', 'w', newline = '',encoding = 'utf8') as f:
         cols = row.find_all('td')
         if len(cols) == 0: 
             cols = row.find_all('th')
-        
+    
         
         cols = [ele.text.strip() for ele in cols]
         if (len(cols) == 6):
