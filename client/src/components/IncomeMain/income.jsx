@@ -14,11 +14,12 @@ function Income() {
     else
       props.setTax(getIncome)
     */
+   /*
    useEffect(() => {
     if (getStatus){
       fetch(``)
     }
-   })
+   })*/
 
   }
 

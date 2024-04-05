@@ -21,9 +21,10 @@ connection.connect((err) =>
   }else {
     console.log("Connected to the database!");
   }
+
 })
 
-
+/*
 const fileName = "tax.csv"; 
 
 csvtojson().fromFile(fileName).then(source => {
@@ -62,7 +63,7 @@ csvtojson().fromFile(fileName).then(source => {
  
 }); 
 
- 
+*/
 app.get('/', (req, res) => {
     const sql = 'SELECT Min, Max, HeadHousehold, Single, MarriedSeperately, MarriedJointly FROM Tax'; 
     connection.query(sql, (err, data) => {

@@ -43,26 +43,29 @@
   width: 18%;
   }
 
-
-
-  
   
 }
+
+.Tax-brackets {
+  overflow-y: auto;
+  height: 500px;
+}
+
 
 table {
   border: 2px solid black; 
   width: 500px; 
   height: 500px; 
   float: right; 
+  overflow: scroll;
 
-  .simplebar-scrollbar::before {
-    background: purple;
-  }
 }
 
 th {
   justify-content: top;
   border: 2px solid black;
+  position: sticky;
+  z-index: 100;
 }
 
 td {
