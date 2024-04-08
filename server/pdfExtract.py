@@ -1,5 +1,6 @@
 import requests 
 from bs4 import BeautifulSoup
+import csv
 from csv import writer 
 
 url = "https://www.irs.gov/publications/p17#d0e50213"
@@ -32,6 +33,11 @@ with open('server/tax.csv', 'w', newline = '',encoding = 'utf8') as f:
             else: 
                 headers = data.pop(0)
                 first_row_skipped = True
+                
+input_file = open('server/tax.csv', 'r')
+output_file = open('server/fixed_tax.csv', 'w')
+data2 = csv.reader(input_file)
+writer = csv.writer(output_file, quoting=csv.QUOTE.ALL)
 
 
   
