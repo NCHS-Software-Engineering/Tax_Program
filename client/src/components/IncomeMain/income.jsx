@@ -23,8 +23,6 @@ function Income(err, Result, Fields) {
   const [getTax, setTax] = useState('');
 
   function Tax(props){
-    let count = 0
-    var key; 
 
 /*    let Map = getTaxes.map((item) => ({Min, Max, H, S, MS, MJ}
 
@@ -53,14 +51,27 @@ function Income(err, Result, Fields) {
       (Tax.MarriedSeperatly)
       ))*/
 
+      let Minimums = []
+      let Maximums = []
+      let Head = []
+      let Single = []
+      let Seperate = []
+      let Jointly = []
+
       const taxed = getTaxes.map(function(data, idx) {
         return ([
             <p key={idx}>{data.Min}</p>,
             <p key={idx}>{data.Max}</p>,
-            <p key={idx}>{data.HeadHouseHold}</p>,
+            <p key={idx}>{data.HeadHousehold}</p>,
             <p key={idx}>{data.Single}</p>,
             <p key={idx}>{data.MarriedSeperately}</p>,
             <p key={idx}>{data.MarriedJointly}</p>,
+            Minimums.push(data.Min),
+            Maximums.push(data.Max),
+            Head.push(data.HeadHousehold),
+            Single.push(data.Single),
+            Seperate.push(data.MarriedSeperately),
+            Jointly.push(data.MarriedJointly)
         ]);
      });
 
@@ -75,8 +86,53 @@ function Income(err, Result, Fields) {
         }
 
      }*/
-    let x = taxed[0]
-    setTax(x)
+
+     let x = 0
+     let i = 0
+     let inc = getIncome
+     if(getStatus === "Head"){
+    while(inc > Maximums[i])
+    {
+      i+= 1
+      x = Head[i]
+    }
+      setTax(x)
+
+    }
+    else if(getStatus === "Single"){
+      {
+        while(inc > Maximums[i])
+        {
+          i+= 1
+          x = Single[i]
+        }
+          setTax(x)
+    
+        }
+    }
+    else if(getStatus === "Jointly"){
+      {
+        while(inc > Maximums[i])
+        {
+          i+= 1
+          x = Jointly[i]
+        }
+          setTax(x)
+    
+        }
+    }
+    else if(getStatus === "Seperate"){
+      {
+        while(inc > Maximums[i])
+        {
+          i+= 1
+          x = Seperate[i]
+        }
+          setTax(x)
+    
+        }
+    }
+
    // alert(x)
     /*
     getTaxes.map((Tax) => React.createElement({key: Tax, className: 'tax item'}, 
@@ -102,9 +158,7 @@ function Income(err, Result, Fields) {
           </header>
           <body className="App-body">
           <IncomeForm setIncome = {setIncome}/>
-              
               <StatusForm setStatus = {setStatus}/>
-              
               <Tax getTaxes = {getTaxes}/>
               <p4>Your tax amount is {getTax}$</p4>
           </body>
