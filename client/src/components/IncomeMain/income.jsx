@@ -100,18 +100,18 @@ function Income(err, Result, Fields) {
 
     }
     else if(getStatus === "Single"){
-      {
+      
         while(inc > Maximums[i])
         {
           i+= 1
           x = Single[i]
         }
           setTax(x)
-    
-        }
+  
+        
     }
     else if(getStatus === "Jointly"){
-      {
+      
         while(inc > Maximums[i])
         {
           i+= 1
@@ -119,10 +119,10 @@ function Income(err, Result, Fields) {
         }
           setTax(x)
     
-        }
+        
     }
-    else if(getStatus === "Seperate"){
-      {
+    else if(getStatus === "Separately"){
+      
         while(inc > Maximums[i])
         {
           i+= 1
@@ -130,7 +130,7 @@ function Income(err, Result, Fields) {
         }
           setTax(x)
     
-        }
+        
     }
 
    // alert(x)
@@ -157,10 +157,9 @@ function Income(err, Result, Fields) {
         
           </header>
           <body className="App-body">
-          <IncomeForm setIncome = {setIncome}/>
-              <StatusForm setStatus = {setStatus}/>
+              <StatusForm setStatus = {setStatus} setIncome = {setIncome}/>
               <Tax getTaxes = {getTaxes}/>
-              <p4>Your tax amount is {getTax}$</p4>
+              <p1>Your tax amount is {getTax}$</p1>
           </body>
         </div>
       </body>
@@ -171,26 +170,39 @@ function Income(err, Result, Fields) {
     const[getS, setS] = useState()
     const SValue = (e) => setS(e.target.value);
 
+    const[getI, setI] = useState()
+    const IValue = (e) => setI(e.target.value);
+
       function ButtonClick(e){
           e.preventDefault()
-          alert("Thanks for submitting!")
           props.setStatus(getS)
+          props.setIncome(getI)
           setS("")
+          setI("")
       } 
 
       return (
         <form>
           <div>
-          <label>What is your household status?</label>
+          <label> What is your annual income (0-100k):</label>
+            <input value={getI} onChange={IValue}
+              type="number"
+              name="income"
+              min="0"
+              max="100000"
+              required />
+            <span class="validity"></span>
+            <label>What is your household status?</label>
           <select value={getS} onChange={SValue}>
             <option value=""> </option>
             <option value="Single">Single</option>
             <option value="Jointly">Married filing jointly</option>
-            <option value="Seperately">Married filing seperately</option>
+            <option value="Separately">Married filing separately</option>
             <option value="Head">Head of Household</option>
           </select>
           <button onClick={ButtonClick} type="submit">Submit</button>
           </div>
+
         </form>
       )
   }
