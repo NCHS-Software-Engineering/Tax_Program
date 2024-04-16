@@ -6,7 +6,7 @@ function Income(err, Result, Fields) {
 
   const [getTaxes, setTaxes] = useState([])
 
-  const baseURL = "http://localhost:8000/";
+  const baseURL = "http://10.7.22.1:8000";
 
   useEffect(() => {
     fetch(`${baseURL}`)
@@ -90,49 +90,101 @@ function Income(err, Result, Fields) {
      let x = 0
      let i = 0
      let inc = getIncome
-     if(getStatus === "Head"){
-    while(inc > Maximums[i])
-    {
-      i+= 1
-      x = Head[i]
-    }
-      setTax(x)
 
-    }
+     if(getStatus === "Head"){
+      if(inc < 100000){
+        while(inc > Maximums[i])
+        {
+          i+= 1
+          x = Head[i]
+        }
+          setTax(x)
+
+        }
+      else if(inc < 182100){
+        setTax(inc*.24 -8206)
+      }
+      else if(inc <231250){
+        setTax(inc*.32 -22774)
+      }
+      else if(inc < 578100){
+        setTax(inc*.35 -29711.5)
+      }
+      else{
+        setTax(inc*.37 - 41273.5)
+      }
+     }
     else if(getStatus === "Single"){
-      
+      if(inc < 100000){
         while(inc > Maximums[i])
         {
           i+= 1
           x = Single[i]
         }
           setTax(x)
-  
+      }
+          else if(inc < 182100){
+            setTax(inc*.24 -6600)
+          }
+          else if(inc <231250){
+            setTax(inc*.32 -21168)
+          }
+          else if(inc < 578125){
+            setTax(inc*.35 -28105.5)
+          }
+          else{
+            setTax(inc*.37 - 39668)
+          }
         
     }
     else if(getStatus === "Jointly"){
-      
+      if(inc < 100000){
         while(inc > Maximums[i])
         {
           i+= 1
           x = Jointly[i]
         }
           setTax(x)
-    
-        
+      }
+          else if(inc < 190750){
+            setTax(inc*.22 -9385)
+          }
+          else if(inc <364200){
+            setTax(inc*.24 -13200)
+          }
+          else if(inc < 462500){
+            setTax(inc*.32 -42336)
+          }
+          else if(inc < 693750){
+            setTax(inc*.35 -56211)
+          }
+          else{
+            setTax(inc*.37 - 70086)
+          }
     }
     else if(getStatus === "Separately"){
-      
+      if(inc < 100000){
         while(inc > Maximums[i])
         {
           i+= 1
           x = Seperate[i]
         }
           setTax(x)
-    
-        
+      }
+          else if(inc < 182100){
+            setTax(inc*.24 -6600)
+          }
+          else if(inc <231250){
+            setTax(inc*.32 -21168)
+          }
+          else if(inc < 346875){
+            setTax(inc*.35 -28105.50)
+          }
+          else{
+            setTax(inc*.37 - 35043)
+          }
     }
-
+      
    // alert(x)
     /*
     getTaxes.map((Tax) => React.createElement({key: Tax, className: 'tax item'}, 
@@ -200,7 +252,7 @@ function Income(err, Result, Fields) {
             <option value="Separately">Married filing separately</option>
             <option value="Head">Head of Household</option>
           </select>
-          <button onClick={ButtonClick} type="submit">Submit</button>
+          <button onClick={ButtonClick} id= "submit" type="submit" >Submit</button>
           </div>
 
         </form>

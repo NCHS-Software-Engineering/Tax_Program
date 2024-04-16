@@ -85,7 +85,7 @@
     font-family: 'Playfair Display', serif;
     color: black; 
 
-    font-size: 40px;
+    font-size: 25x;
   }
  
  input {
@@ -117,6 +117,13 @@
   flex: 3;
 
  }
+
+ button{
+  font-family: 'Playfair Display', serif;
+  color: black; 
+  height: 53px;
+  width: 75px;
+}
 
 }
 
