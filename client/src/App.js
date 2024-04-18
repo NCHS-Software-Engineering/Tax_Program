@@ -24,7 +24,7 @@ async function postData(url = "", data = {}) {
 
 function App() {
 
-  const baseURL = "http://localhost:8000/";
+  const baseURL = "http://localhost:88/";
   const[incomes, setIncomes] = useState([]); 
   useEffect(() => {
     fetch(`${baseURL}`)
@@ -47,7 +47,7 @@ function App() {
       
             <img id = "logo" src={Logo} alt="logo" />
            
-          <div className = "Tax brackers"> 
+          <div className = "Tax-brackets"> 
             <table> 
             <thead>
             <tr> 
