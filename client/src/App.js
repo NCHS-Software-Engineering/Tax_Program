@@ -24,7 +24,7 @@ async function postData(url = "", data = {}) {
 
 function App() {
 
-  const baseURL = "http://localhost:88/";
+  const baseURL = "http://localhost:2200/";
   const[incomes, setIncomes] = useState([]); 
   useEffect(() => {
     fetch(`${baseURL}`)
