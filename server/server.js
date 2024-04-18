@@ -22,6 +22,14 @@ connection.connect((err) =>
   }
 })
 
+connection.connect(function(err) {
+  if (err) throw err;
+  connection.query('SELECT Min, Max, HeadHousehold, Single, MarriedSeperately, MarriedJointly FROM Tax', function Income(err, result, Fields)
+  {
+    if (err) throw err;
+    console.log(result);
+  })
+})
  
 app.get('/', (req, res) => {
     const sql = 'SELECT Min, Max, HeadHousehold, Single, MarriedSeperately, MarriedJointly FROM Tax'; 
@@ -31,13 +39,7 @@ app.get('/', (req, res) => {
       })
 })
 
-app.get('/income_single', (req, res) => {
-  const sql = 'SET @var1 = 10;'
-  + 'SELECT Single FROM `Tax` WHERE @var1 >= Min AND @var1 < Max';
-  connection.query(sql, (err, data) => {
-    if (err) return res.json(err);  
-    return res.json(data); 
-})
+
 
 app.listen(2200, () => {
     console.log(`Server running on port 2200.`)
