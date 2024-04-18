@@ -43,9 +43,9 @@ function App() {
   
       <div className="App">
         <header className="App-header">
-       
       
             <img id = "logo" src={Logo} alt="logo" />
+            
            
           <div className = "Tax brackers"> 
             <table> 

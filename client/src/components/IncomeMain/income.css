@@ -90,7 +90,7 @@
  
  input {
   flex: 2;
-
+  background-color: beige;
   font-family: 'Playfair Display', serif;
   color: black; 
   text-align: center;
@@ -102,7 +102,7 @@
 
  select{
   flex: 2;
-
+  background-color: beige;
   font-family: 'Playfair Display', serif;
   color: black; 
   text-align: center;
@@ -119,6 +119,7 @@
  }
 
  button{
+  background-color: ;
   font-family: 'Playfair Display', serif;
   color: black; 
   height: 53px;

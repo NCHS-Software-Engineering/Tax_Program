@@ -24,33 +24,6 @@ function Income(err, Result, Fields) {
 
   function Tax(props){
 
-/*    let Map = getTaxes.map((item) => ({Min, Max, H, S, MS, MJ}
-
-        /*(income.Min)
-        (income.Max)
-        (income.HeadHousehold) 
-        (income.Single)
-        (income.MarriedSeperately)
-        (income.MarriedJointly
-    
-        )
-      
-      )
-*/
-      
-      
-
-    //alert(getTaxes)
-
-    /*const taxes = getTaxes.map((Tax, index) => ({key: index}
-      (Tax.Min),
-      (Tax.Max),
-      (Tax.HeadHouseHold),
-      (Tax.Single),
-      (Tax.MarriedJointly),
-      (Tax.MarriedSeperatly)
-      ))*/
-
       let Minimums = []
       let Maximums = []
       let Head = []
@@ -74,18 +47,6 @@ function Income(err, Result, Fields) {
             Jointly.push(data.MarriedJointly)
         ]);
      });
-
-    /* const H = []
-     let i = 0
-     let j = 2
-     alert(taxed.size)
-     for(i = 0; i < taxed.size; i++){
-        let x = taxed[i]
-        for(j = 2; j<6; j++){
-          H.push(x)
-        }
-
-     }*/
 
      let x = 0
      let i = 0
@@ -184,20 +145,7 @@ function Income(err, Result, Fields) {
             setTax(inc*.37 - 35043)
           }
     }
-      
-   // alert(x)
-    /*
-    getTaxes.map((Tax) => React.createElement({key: Tax, className: 'tax item'}, 
-    React.createElement( {}, Tax.Min), 
-    React.createElement( {}, Tax.Max), 
-    React.createElement( {}, Tax.HeadHouseHold), 
-    React.createElement( {}, Tax.Single), 
-    React.createElement( {}, Tax.MarriedJointly), 
-    React.createElement( {}, Tax.MarriedSeperatly), 
-    ))*/
-
-      //props.setTax(taxes.get(25))
-     
+  
   }
 
 
