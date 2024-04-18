@@ -39,8 +39,8 @@ app.get('/income_single', (req, res) => {
     return res.json(data); 
 })
 
-app.listen(8000, () => {
-    console.log(`Server running on port 8000.`)
+app.listen(2200, () => {
+    console.log(`Server running on port 2200.`)
 })
 
 /*https://www.irs.gov/pub/irs-prior/i1040tt--2023.pdf*/
