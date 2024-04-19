@@ -1,7 +1,7 @@
 import requests 
 from bs4 import BeautifulSoup
-import csv
 from csv import writer 
+import pandas as pd
 
 url = "https://www.irs.gov/publications/p17#d0e50213"
 page = requests.get(url).text
@@ -9,6 +9,7 @@ page = requests.get(url).text
 soup = BeautifulSoup(page, 'html.parser')
 tables = soup.find_all("table")
 results = tables[-13]
+
 
 with open('server/tax.csv', 'w', newline = '',encoding = 'utf8') as f:
     thewriter = writer(f)
@@ -26,23 +27,33 @@ with open('server/tax.csv', 'w', newline = '',encoding = 'utf8') as f:
         
         cols = [ele.text.strip() for ele in cols]
         if (len(cols) == 6):
+            for element in cols: 
+                element = element.replace('"', '')
+                print(element)
             data.append([ele.strip() for ele in cols if ele]) #gets rid of empty values
             if (first_row_skipped == True): 
-                thewriter.writerow(data)
-                headers = data.pop(0)
+                df = pd.DataFrame(data)
+                df.to_csv('server/tax.csv', index = False)
             else: 
                 headers = data.pop(0)
                 first_row_skipped = True
-                
-input_file = open('server/tax.csv', 'r')
-output_file = open('server/fixed_tax.csv', 'w')
-data2 = csv.reader(input_file)
-writer = csv.writer(output_file, quoting=csv.QUOTE.ALL)
+        
+    
+        
+
+
+          #{/*if (first_row_skipped == True): 
+                #thewriter.writerow(data)
+                #headers = data.pop(0)
+            #else: 
+                #headers = data.pop(0)
+                #first_row_skipped = True*/}
+                  
+
+            
 
 
   
-
-
     
         
 
