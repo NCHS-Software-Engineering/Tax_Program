@@ -27,27 +27,19 @@ with open('server/tax.csv', 'w', newline = '',encoding = 'utf8') as f:
         
         cols = [ele.text.strip() for ele in cols]
         if (len(cols) == 6):
-            for element in cols: 
-                element = element.replace('"', '')
-                print(element)
-            data.append([ele.strip() for ele in cols if ele]) #gets rid of empty values
+            for i, element in enumerate(cols): 
+                cols[i] = element.replace('"', '').replace(',', '') #gets rid of the quotation marks around the numbers
+                if (cols[i] == None): 
+                    break
+            data.append(cols)
             if (first_row_skipped == True): 
                 df = pd.DataFrame(data)
-                df.to_csv('server/tax.csv', index = False)
+                df.to_csv('server/tax.csv', index = False, header = False)
             else: 
                 headers = data.pop(0)
                 first_row_skipped = True
         
     
-        
-
-
-          #{/*if (first_row_skipped == True): 
-                #thewriter.writerow(data)
-                #headers = data.pop(0)
-            #else: 
-                #headers = data.pop(0)
-                #first_row_skipped = True*/}
                   
 
             
