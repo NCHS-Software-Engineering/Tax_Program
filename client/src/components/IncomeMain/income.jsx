@@ -1,6 +1,13 @@
 //import logo from '../images/logo.png';
 import React, { useState } from "react";
 import './income.css';
+import {
+  InputContainer,
+  Input,
+  InputHighlighter,
+  Heading,
+} from "./incomeStyles";
+
 
 function Income() {
   const [getIncome, setIncome] = useState('');  
@@ -37,7 +44,7 @@ function Income() {
               <StatusForm setStatus = {setStatus}/>
               
               <Tax setTax = {setTax}/>
-              <p4>Your tax amount is {getTax}$</p4>
+              <p4>Your tax amount is ${getTax}</p4>
           </body>
         </div>
       </body>
