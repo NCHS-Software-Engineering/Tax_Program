@@ -1,0 +1,4 @@
+function taxCalculator(income, filingStatus)
+{
+    
+}

@@ -60,6 +60,14 @@ csvtojson().fromFile(fileName).then(source => {
   }
   console.log(
     "All items stored into database successfully");
+connection.connect(function(err) {
+  if (err) throw err;
+  connection.query('SELECT Min, Max, HeadHousehold, Single, MarriedSeperately, MarriedJointly FROM Tax', function Income(err, result, Fields)
+  {
+    if (err) throw err;
+    console.log(result);
+  })
+})
  
 }); 
 
@@ -72,8 +80,10 @@ app.get('/', (req, res) => {
       })
 })
 
-app.listen(8000, () => {
-    console.log(`Server running on port 8000.`)
+
+
+app.listen(2200, () => {
+    console.log(`Server running on port 2200.`)
 })
 
 /*https://www.irs.gov/pub/irs-prior/i1040tt--2023.pdf*/
