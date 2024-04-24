@@ -34,7 +34,6 @@
   color: black;
 
  
-
   #logo 
   {
   float: left;
@@ -43,29 +42,33 @@
   width: 18%;
   }
 
-  h1{
-    
+  table {
+    border: 2px solid black; 
+    width: 500px; 
+    height: 500px; 
+    float: right; 
+    overflow-y: scroll;
+    height: 1000px;
+  }
+  
+  .Tax-brackets{
+    overflow-y: scroll;
+    height: 1000px;
+  }
+  
+  th {
+    justify-content: top;
+    border: 2px solid black;
+  }
+  
+  td {
+    border: 2px solid black;
   }
 
   
   
 }
 
-table {
-  border: 2px solid black; 
-  width: 500px; 
-  height: 500px; 
-  float: right; 
-}
-
-th {
-  justify-content: top;
-  border: 2px solid black;
-}
-
-td {
-  border: 2px solid black;
-}
 
 
 

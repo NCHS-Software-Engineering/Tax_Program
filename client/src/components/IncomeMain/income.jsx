@@ -6,7 +6,7 @@ function Income(err, Result, Fields) {
 
   const [getTaxes, setTaxes] = useState([])
 
-  const baseURL = "http://10.7.22.1:8000";
+  const baseURL = "http://10.7.22.1:2200";
 
   useEffect(() => {
     fetch(`${baseURL}`)
@@ -152,15 +152,47 @@ function Income(err, Result, Fields) {
     return (
 
       <body>
-        <div className="App">
-          <header className="App-header">
-        
+        <div className="Income">
+
+        <body className="Income-body">
+            
+            <StatusForm setStatus = {setStatus} setIncome = {setIncome}/>
+            <br></br>
+            <br></br>
+            <Tax getTaxes = {getTaxes}/>
+            <p1>Your tax amount is {getTax}$</p1>
+
+        </body>
+          <header className="Income-header">
+          <div className = "Tax-brackets">
+            <table> 
+            <thead>
+            <tr> 
+              <th>Minimum Income</th>
+              <th>Maximum Income</th>
+              <th>Head of HouseHold</th>
+              <th>Single</th>
+              <th>Married Filing Seperately</th>
+              <th>Married Filing Jointly</th>
+            </tr>
+            </thead>
+            <tbody>
+            {
+              getTaxes.map((income, index) => (
+              <tr key={index}>
+                <td> {income.Min} </td>
+                <td> {income.Max} </td>
+                <td> {income.HeadHousehold} </td>
+                <td> {income.Single} </td>
+                <td> {income.MarriedSeperately} </td>
+                <td> {income.MarriedJointly} </td>
+              </tr>
+            ))}
+            </tbody>
+            </table> 
+            </div>
           </header>
-          <body className="App-body">
-              <StatusForm setStatus = {setStatus} setIncome = {setIncome}/>
-              <Tax getTaxes = {getTaxes}/>
-              <p1>Your tax amount is {getTax}$</p1>
-          </body>
+         
         </div>
       </body>
     );
@@ -192,6 +224,8 @@ function Income(err, Result, Fields) {
               max="100000"
               required />
             <span class="validity"></span>
+            <br></br>
+            <br></br>
             <label>What is your household status?</label>
           <select value={getS} onChange={SValue}>
             <option value=""> </option>
@@ -207,7 +241,7 @@ function Income(err, Result, Fields) {
       )
   }
 
-  function IncomeForm(props){
+  /*function IncomeForm(props){
     const[getI, setI] = useState()
     const IValue = (e) => setI(e.target.value);
 
@@ -232,7 +266,7 @@ function Income(err, Result, Fields) {
           </div>
         </form>
       )
-    }
+    }*/
 
 
   export default Income;

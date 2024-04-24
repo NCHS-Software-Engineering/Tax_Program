@@ -21,15 +21,6 @@ connection.connect((err) =>
     console.log("Connected to the database!");
   }
 })
-
-connection.connect(function(err) {
-  if (err) throw err;
-  connection.query('SELECT Min, Max, HeadHousehold, Single, MarriedSeperately, MarriedJointly FROM Tax', function Income(err, result, Fields)
-  {
-    if (err) throw err;
-    console.log(result);
-  })
-})
  
 app.get('/', (req, res) => {
     const sql = 'SELECT Min, Max, HeadHousehold, Single, MarriedSeperately, MarriedJointly FROM Tax'; 
