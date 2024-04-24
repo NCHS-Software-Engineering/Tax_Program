@@ -44,43 +44,18 @@ function App() {
     
   
       <div className="App">
-        <header className="App-header">
-      
+        <body className="App-header">
+          
             <img id = "logo" src={Logo} alt="logo" />
             
-           
-          <div className = "Tax-brackets"> 
-            <table> 
-            <thead>
-            <tr> 
-              <th>Minimum Income</th>
-              <th>Maximum Income</th>
-              <th>Head of HouseHold</th>
-              <th>Single</th>
-              <th>Married Filing Seperately</th>
-              <th>Married Filing Jointly</th>
-            </tr>
-            </thead>
-            <tbody>
-            {
-              incomes.map((income, index) => (
-              <tr key={index}>
-                <td> {income.Min} </td>
-                <td> {income.Max} </td>
-                <td> {income.HeadHousehold} </td>
-                <td> {income.Single} </td>
-                <td> {income.MarriedSeperately} </td>
-                <td> {income.MarriedJointly} </td>
-              </tr>
-            ))}
-            </tbody>
-            </table> 
+       
+       
+
             <div>
               <Income />
             </div>
         
-          </div>
-        </header>
+        </body>
       </div>
 
     

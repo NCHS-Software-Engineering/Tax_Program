@@ -34,7 +34,6 @@
   color: black;
 
  
-
   #logo 
   {
   float: left;
@@ -43,34 +42,33 @@
   width: 18%;
   }
 
+  table {
+    border: 2px solid black; 
+    width: 500px; 
+    height: 500px; 
+    float: right; 
+    overflow-y: scroll;
+    height: 1000px;
+  }
+  
+  .Tax-brackets{
+    overflow-y: scroll;
+    height: 1000px;
+  }
+  
+  th {
+    justify-content: top;
+    border: 2px solid black;
+  }
+  
+  td {
+    border: 2px solid black;
+  }
+
+  
   
 }
 
-.Tax-brackets {
-  overflow-y: auto;
-  height: 500px;
-}
-
-
-table {
-  border: 2px solid black; 
-  width: 500px; 
-  height: 500px; 
-  float: right; 
-  overflow: scroll;
-
-}
-
-th {
-  justify-content: top;
-  border: 2px solid black;
-  position: sticky;
-  z-index: 100;
-}
-
-td {
-  border: 2px solid black;
-}
 
 
 
