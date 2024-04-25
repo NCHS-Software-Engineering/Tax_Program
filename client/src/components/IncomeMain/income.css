@@ -50,13 +50,14 @@
   }
 
   table {
-    border: 3px solid black;
+    border: 3px solid white;
     width: 500px; 
     height: 500px; 
     float: right; 
     overflow: auto; 
     height: 1000px;
     border-collapse: collapse;
+    
   }
   table thead th { position: sticky; 
     top: 0; 
@@ -70,11 +71,11 @@
   
   th {
     justify-content: top;
-    border: 2px solid black;
+    border: 2px solid white;
   }
-  
+
   td {
-    border: 2px solid black;
+    border: 2px solid white;
   }
   
 }}
@@ -111,7 +112,7 @@
  
  input {
   flex: 2;
-  background-color: beige;
+  background-color: white;
   font-family: 'Playfair Display', serif;
   color: black; 
   text-align: center;
@@ -123,7 +124,7 @@
 
  select{
   flex: 2;
-  background-color: beige;
+  background-color: white;
   font-family: 'Playfair Display', serif;
   color: black; 
   text-align: center;
@@ -142,7 +143,8 @@
  button{
   
   font-family: 'Playfair Display', serif;
-  color: black; 
+  background-color: #7ba294; 
+  color: white; 
   height: 53px;
   width: 75px;
 }

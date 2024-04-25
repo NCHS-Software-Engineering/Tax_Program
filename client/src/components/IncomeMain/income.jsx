@@ -160,7 +160,7 @@ function Income(err, Result, Fields) {
             <br></br>
             <br></br>
             <Tax getTaxes = {getTaxes}/>
-            <p1>Your tax amount is {getTax}$</p1>
+            <p1>Your tax amount is ${getTax.toLocaleString()}</p1>
 
         </body>
           <header className="Income-header">
