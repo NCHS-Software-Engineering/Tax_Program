@@ -179,7 +179,7 @@ function Income(err, Result, Fields) {
             <tbody>
             {
               getTaxes.map((income, index) => (
-              <tr key={index}>
+              <tr key={index} id = {"tax" + income.Min}>
                 <td> {income.Min} </td>
                 <td> {income.Max} </td>
                 <td> {income.HeadHousehold} </td>

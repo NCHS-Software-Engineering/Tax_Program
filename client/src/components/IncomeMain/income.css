@@ -3,7 +3,7 @@
 .Income {
   margin: 1rem;
   padding: 4rem 4rem;
-
+ 
   flex-direction: column;
 }
 
@@ -26,7 +26,7 @@
 
 
 .Income-header {
-  background-color: rgb(40, 119, 93);
+  
   min-height: 50vh;
   display: flex;
   flex-direction: column;
@@ -50,16 +50,21 @@
   }
 
   table {
-    border: 2px solid black; 
+    border: 3px solid black;
     width: 500px; 
     height: 500px; 
     float: right; 
-    overflow-y: scroll;
+    overflow: auto; 
     height: 1000px;
+    border-collapse: collapse;
   }
+  table thead th { position: sticky; 
+    top: 0; 
+    z-index: 1; 
+    background-color: #7ba294;
   
   .Tax-brackets{
-    overflow-y: scroll;
+    overflow: auto; 
     height: 1000px;
   }
   
@@ -72,10 +77,10 @@
     border: 2px solid black;
   }
   
-}
+}}
 
 .Income-body {
-  background-color: rgb(40, 119, 93);
+  
   min-height: 50vh;
   display: flex;
   flex-direction: column;
@@ -84,14 +89,14 @@
   vertical-align: middle;
   width: 550px;
   font-size: calc(10px + 2vmin);
-  color: rgb(0, 0, 0);
+  color: #7ba294;
   padding: 8%;
 
   p1{
     flex: 2;
 
     font-family: 'Playfair Display', serif;
-    color: black; 
+   
     
     font-size: 40px;
   }
@@ -99,7 +104,7 @@
     flex: 3;
 
     font-family: 'Playfair Display', serif;
-    color: black; 
+    
 
     font-size: 25x;
   }
