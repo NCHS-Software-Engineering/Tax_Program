@@ -25,7 +25,7 @@ async function postData(url = "", data = {}) {
 
 function App() {
 
-  const baseURL = "http://localhost:8000/";
+  const baseURL = "http://localhost:2200/";
   const[incomes, setIncomes] = useState([]); 
   useEffect(() => {
     fetch(`${baseURL}`)
@@ -44,38 +44,12 @@ function App() {
        
       
             <img id = "logo" src={Logo} alt="logo" />
-           
-          <div className = "Tax brackers"> 
-            <table> 
-            <thead>
-            <tr> 
-              <th>Minimum Income</th>
-              <th>Maximum Income</th>
-              <th>Head of HouseHold</th>
-              <th>Single</th>
-              <th>Married Filing Seperately</th>
-              <th>Married Filing Jointly</th>
-            </tr>
-            </thead>
-            <tbody>
-            {
-              incomes.map((income, index) => (
-              <tr key={index}>
-                <td> {income.Min} </td>
-                <td> {income.Max} </td>
-                <td> {income.HeadHousehold} </td>
-                <td> {income.Single} </td>
-                <td> {income.MarriedSeperately} </td>
-                <td> {income.MarriedJointly} </td>
-              </tr>
-            ))}
-            </tbody>
-            </table> 
+          
             <div>
               <Income />
             </div>
         
-          </div>
+         
         </header>
       </div>
 
