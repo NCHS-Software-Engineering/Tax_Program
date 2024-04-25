@@ -58,9 +58,10 @@ function Income(err, Result, Fields) {
         {
           i+= 1
           x = Head[i]
+        
         }
+        
           setTax(x)
-
         }
       else if(inc < 182100){
         setTax(inc*.24 -8206)
@@ -211,6 +212,7 @@ function Income(err, Result, Fields) {
           props.setIncome(getI)
           setS("")
           setI("")
+        
       } 
 
       return (
