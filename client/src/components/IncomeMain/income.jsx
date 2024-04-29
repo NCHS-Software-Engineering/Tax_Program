@@ -21,6 +21,8 @@ function Income(err, Result, Fields) {
   const [getIncome, setIncome] = useState('');  
   const [getStatus, setStatus] = useState('');  
   const [getTax, setTax] = useState('');
+  const [highlightedRowId, setHighlightedRowId] = useState(null);
+
 
   function Tax(props){
 
@@ -53,6 +55,7 @@ function Income(err, Result, Fields) {
      let inc = getIncome
 
      if(getStatus === "Head"){
+      setHighlightedRowId("tax" + getTaxes[0].Min);
       if(inc < 100000){
         while(inc > Maximums[i])
         {
@@ -76,6 +79,7 @@ function Income(err, Result, Fields) {
       }
      }
     else if(getStatus === "Single"){
+      setHighlightedRowId("tax" + getTaxes[1].Min);
       if(inc < 100000){
         while(inc > Maximums[i])
         {
@@ -179,7 +183,7 @@ function Income(err, Result, Fields) {
             <tbody>
             {
               getTaxes.map((income, index) => (
-              <tr key={index} id = {"tax" + income.Min}>
+                <tr key={index} id={"tax" + income.Min} className={highlightedRowId === "tax" + income.Min ? "highlighted" : ""}>
                 <td> {income.Min} </td>
                 <td> {income.Max} </td>
                 <td> {income.HeadHousehold} </td>
