@@ -3,7 +3,7 @@
 .Income {
   margin: 1rem;
   padding: 4rem 4rem;
- 
+  
   flex-direction: column;
 }
 
@@ -91,7 +91,7 @@
   vertical-align: middle;
   width: 550px;
   font-size: calc(10px + 2vmin);
-  color: #7ba294;
+  color: black;
   padding: 8%;
 
   p1{
@@ -131,8 +131,11 @@
   text-align: center;
   justify-content: right;
   font-size: 25px;
-  width: 300px;
+  width: 320px;
   height: 50px;
+
+  
+
  }
 
  StatusForm{

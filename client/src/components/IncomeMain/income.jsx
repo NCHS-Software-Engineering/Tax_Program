@@ -1,4 +1,5 @@
 //import logo from '../images/logo.png';
+import {withRouter} from 'react-router'
 import React, { useState, useEffect } from "react";
 import './income.css';
 
@@ -60,8 +61,11 @@ function Income(err, Result, Fields) {
           x = Head[i]
         
         }
-        
-          setTax(x)
+        if(i>6)
+          window.location = "http://localhost:3000/" + "#tax" + Minimums[i-3]
+        else
+          window.location = "http://localhost:3000/" + "#tax" + Minimums[i]
+        setTax(x)
         }
       else if(inc < 182100){
         setTax(inc*.24 -8206)
@@ -83,6 +87,10 @@ function Income(err, Result, Fields) {
           i+= 1
           x = Single[i]
         }
+        if(i>6)
+          window.location = "http://localhost:3000/" + "#tax" + Minimums[i-3]
+        else
+          window.location = "http://localhost:3000/" + "#tax" + Minimums[i]
           setTax(x)
       }
           else if(inc < 182100){
@@ -106,6 +114,10 @@ function Income(err, Result, Fields) {
           i+= 1
           x = Jointly[i]
         }
+        if(i>6)
+          window.location = "http://localhost:3000/" + "#tax" + Minimums[i-3]
+        else
+          window.location = "http://localhost:3000/" + "#tax" + Minimums[i]
           setTax(x)
       }
           else if(inc < 190750){
@@ -131,6 +143,11 @@ function Income(err, Result, Fields) {
           i+= 1
           x = Seperate[i]
         }
+        if(i>6)
+          window.location = "http://localhost:3000/" + "#tax" + Minimums[i-3]
+        else
+          window.location = "http://localhost:3000/" + "#tax" + Minimums[i]
+          
           setTax(x)
       }
           else if(inc < 182100){
@@ -146,6 +163,7 @@ function Income(err, Result, Fields) {
             setTax(inc*.37 - 35043)
           }
     }
+    
   
   }
 
@@ -161,10 +179,11 @@ function Income(err, Result, Fields) {
             <br></br>
             <br></br>
             <Tax getTaxes = {getTaxes}/>
-            <p1>Your tax amount is {getTax}$</p1>
+            <p1>Your tax amount is ${getTax.toLocaleString()}</p1>
 
         </body>
           <header className="Income-header">
+            
           <div className = "Tax-brackets">
             <table> 
             <thead>
@@ -212,7 +231,7 @@ function Income(err, Result, Fields) {
           props.setIncome(getI)
           setS("")
           setI("")
-        
+          
       } 
 
       return (
