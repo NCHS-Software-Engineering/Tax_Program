@@ -22,6 +22,8 @@ function Income(err, Result, Fields) {
   const [getStatus, setStatus] = useState('');  
   const [getTax, setTax] = useState('');
   const [highlightedRowId, setHighlightedRowId] = useState(null);
+  let idVal = 0
+  
 
 
   function Tax(props){
@@ -53,15 +55,20 @@ function Income(err, Result, Fields) {
      let x = 0
      let i = 0
      let inc = getIncome
+     
+
 
      if(getStatus === "Head"){
-      setHighlightedRowId("tax" + getTaxes[0].Min);
+    
       if(inc < 100000){
         while(inc > Maximums[i])
         {
           i+= 1
           x = Head[i]
+          idVal = Maximums[i]
         }
+          console.log(idVal);
+          setHighlightedRowId("tax"+idVal);
           setTax(x)
 
         }
@@ -79,13 +86,13 @@ function Income(err, Result, Fields) {
       }
      }
     else if(getStatus === "Single"){
-      setHighlightedRowId("tax" + getTaxes[1].Min);
       if(inc < 100000){
         while(inc > Maximums[i])
         {
           i+= 1
           x = Single[i]
         }
+          setHighlightedRowId("tax"+x);
           setTax(x)
       }
           else if(inc < 182100){
@@ -109,6 +116,7 @@ function Income(err, Result, Fields) {
           i+= 1
           x = Jointly[i]
         }
+          setHighlightedRowId("tax"+x);
           setTax(x)
       }
           else if(inc < 190750){
@@ -134,6 +142,7 @@ function Income(err, Result, Fields) {
           i+= 1
           x = Seperate[i]
         }
+          setHighlightedRowId("tax"+x);
           setTax(x)
       }
           else if(inc < 182100){
@@ -183,7 +192,7 @@ function Income(err, Result, Fields) {
             <tbody>
             {
               getTaxes.map((income, index) => (
-                <tr key={index} id={"tax" + income.Min} className={highlightedRowId === "tax" + income.Min ? "highlighted" : ""}>
+                <tr key={index} id = {"tax" + income.Min} className={highlightedRowId === "tax" + idVal ? "highlighted" : ""}>
                 <td> {income.Min} </td>
                 <td> {income.Max} </td>
                 <td> {income.HeadHousehold} </td>

@@ -63,6 +63,7 @@
     top: 0; 
     z-index: 1; 
     background-color: #7ba294;
+    
   
   .Tax-brackets{
     overflow: auto; 
@@ -79,6 +80,8 @@
   }
   
 }}
+
+
 
 .Income-body {
   
@@ -152,9 +155,8 @@
 
 
 }
-
 .highlighted {
-  background-color: yellow; /* or any other color you prefer */
+  background-color: yellow; 
 }
 
 
