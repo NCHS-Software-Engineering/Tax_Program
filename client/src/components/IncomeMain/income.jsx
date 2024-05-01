@@ -3,8 +3,9 @@ import {withRouter} from 'react-router'
 import React, { useState, useEffect } from "react";
 import './income.css';
 
-function Income(err, Result, Fields) {
+let z = 0
 
+function Income(err, Result, Fields) {
   const [getTaxes, setTaxes] = useState([])
 
   const baseURL = "http://10.7.22.1:2200";
@@ -24,7 +25,7 @@ function Income(err, Result, Fields) {
   const [getTax, setTax] = useState('');
 
   function Tax(props){
-
+    
       let Minimums = []
       let Maximums = []
       let Head = []
@@ -55,12 +56,13 @@ function Income(err, Result, Fields) {
 
      if(getStatus === "Head"){
       if(inc < 100000){
-        while(inc > Maximums[i])
+        while(inc >= Maximums[i])
         {
-          i+= 1
+          i+=1
           x = Head[i]
         
         }
+        changeBackgroundColor(Minimums[i])
         if(i>6)
           window.location = "http://localhost:3000/" + "#tax" + Minimums[i-3]
         else
@@ -82,11 +84,12 @@ function Income(err, Result, Fields) {
      }
     else if(getStatus === "Single"){
       if(inc < 100000){
-        while(inc > Maximums[i])
+        while(inc >= Maximums[i])
         {
           i+= 1
           x = Single[i]
         }
+        changeBackgroundColor(Minimums[i])
         if(i>6)
           window.location = "http://localhost:3000/" + "#tax" + Minimums[i-3]
         else
@@ -109,11 +112,12 @@ function Income(err, Result, Fields) {
     }
     else if(getStatus === "Jointly"){
       if(inc < 100000){
-        while(inc > Maximums[i])
+        while(inc >= Maximums[i])
         {
           i+= 1
           x = Jointly[i]
         }
+        changeBackgroundColor(Minimums[i])
         if(i>6)
           window.location = "http://localhost:3000/" + "#tax" + Minimums[i-3]
         else
@@ -138,11 +142,12 @@ function Income(err, Result, Fields) {
     }
     else if(getStatus === "Separately"){
       if(inc < 100000){
-        while(inc > Maximums[i])
+        while(inc >= Maximums[i])
         {
           i+= 1
           x = Seperate[i]
         }
+        changeBackgroundColor(Minimums[i])
         if(i>6)
           window.location = "http://localhost:3000/" + "#tax" + Minimums[i-3]
         else
@@ -231,7 +236,6 @@ function Income(err, Result, Fields) {
           props.setIncome(getI)
           setS("")
           setI("")
-          
       } 
 
       return (
@@ -261,6 +265,35 @@ function Income(err, Result, Fields) {
         </form>
       )
   }
+
+  function changeBackgroundColor(number) {
+    let color = "#FFBF00"
+    
+    let numbers = []
+    numbers[z] = number 
+    
+   
+      resetBackgroundColor(number, z)
+
+    z++
+    
+    var x = document.querySelector('table');
+    x.querySelector("#tax"+number).style.backgroundColor = color;
+  }
+
+    function resetBackgroundColor(num, num2){
+      if(z=0){
+      let number = 200
+    }
+
+      if(num2 >0){
+      let color2 = "#28775d"
+      
+      var x = document.querySelector('table');
+      x.querySelector("#tax"+number).style.backgroundColor = color2;}
+      
+        let number = num
+    }
 
   /*function IncomeForm(props){
     const[getI, setI] = useState()
