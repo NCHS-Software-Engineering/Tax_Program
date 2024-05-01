@@ -8,7 +8,7 @@ let z = 0
 function Income(err, Result, Fields) {
   const [getTaxes, setTaxes] = useState([])
 
-  const baseURL = "http://10.7.22.1:2200";
+  const baseURL = "http://localhost:2200/";
 
   useEffect(() => {
     fetch(`${baseURL}`)
