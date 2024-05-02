@@ -3,7 +3,7 @@ import {withRouter} from 'react-router'
 import React, { useState, useEffect } from "react";
 import './income.css';
 
-let z = 0
+let count = 0
 
 function Income(err, Result, Fields) {
   const [getTaxes, setTaxes] = useState([])
@@ -266,34 +266,37 @@ function Income(err, Result, Fields) {
       )
   }
 
-  function changeBackgroundColor(number) {
-    let color = "#FFBF00"
-    
-    let numbers = []
-    numbers[z] = number 
-    
-   
-      resetBackgroundColor(number, z)
+  let numbers = []
+  let count2 = 0
 
-    z++
+  function changeBackgroundColor(number) {
     
+    
+    let color = "#FFBF00"
+        
     var x = document.querySelector('table');
     x.querySelector("#tax"+number).style.backgroundColor = color;
+    if(count2 > 1){  
+      resetBackgroundColor(numbers[0])
+      numbers.pop()
+      console.log(numbers)
+      console.log(count2)
+    }
+    count+= 1
+    if(count%4 == 0){
+      count2++
+      numbers.push(number)
+    }
+   
   }
 
-    function resetBackgroundColor(num, num2){
-      if(z=0){
-      let number = 200
-    }
+    function resetBackgroundColor(number){
+      let color = "#28775d"
 
-      if(num2 >0){
-      let color2 = "#28775d"
-      
       var x = document.querySelector('table');
-      x.querySelector("#tax"+number).style.backgroundColor = color2;}
-      
-        let number = num
+      x.querySelector("#tax"+number).style.backgroundColor = color;
     }
+  
 
   /*function IncomeForm(props){
     const[getI, setI] = useState()
