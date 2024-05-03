@@ -270,20 +270,19 @@ function Income(err, Result, Fields) {
   let count2 = 0
 
   function changeBackgroundColor(number) {
-    
-    
     let color = "#FFBF00"
         
     var x = document.querySelector('table');
     x.querySelector("#tax"+number).style.backgroundColor = color;
     if(count2 > 1){  
       resetBackgroundColor(numbers[0])
-      numbers.pop()
+      numbers.shift()
       console.log(numbers)
       console.log(count2)
+      count2 = 1
     }
     count+= 1
-    if(count%4 == 0){
+    if(count%4 === 0){
       count2++
       numbers.push(number)
     }
