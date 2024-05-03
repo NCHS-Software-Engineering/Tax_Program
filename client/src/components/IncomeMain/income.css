@@ -61,7 +61,7 @@
   }
   table thead th { position: sticky; 
     
-    top: 0; 
+    top: -.25em; 
     z-index: 1; 
     background-color: #7ba294;
   

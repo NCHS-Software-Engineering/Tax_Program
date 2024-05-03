@@ -270,10 +270,14 @@ function Income(err, Result, Fields) {
   let count2 = 0
 
   function changeBackgroundColor(number) {
+    
+    
     let color = "#FFBF00"
         
     var x = document.querySelector('table');
     x.querySelector("#tax"+number).style.backgroundColor = color;
+  
+    
     if(count2 > 1){  
       resetBackgroundColor(numbers[0])
       numbers.shift()
@@ -282,7 +286,7 @@ function Income(err, Result, Fields) {
       count2 = 1
     }
     count+= 1
-    if(count%4 === 0){
+    if(count%4 == 0){
       count2++
       numbers.push(number)
     }
@@ -295,34 +299,5 @@ function Income(err, Result, Fields) {
       var x = document.querySelector('table');
       x.querySelector("#tax"+number).style.backgroundColor = color;
     }
-  
-
-  /*function IncomeForm(props){
-    const[getI, setI] = useState()
-    const IValue = (e) => setI(e.target.value);
-
-      function ButtonClick(e){
-          e.preventDefault()
-          alert("Thanks for submitting!")
-          props.setIncome(getI)
-          setI("")
-      } 
-        return(
-      <form name = 'income'>
-          <div>
-            <label> What is your annual income (0-100k):</label>
-            <input value={getI} onChange={IValue}
-              type="number"
-              name="income"
-              min="0"
-              max="100000"
-              required />
-            <span class="validity"></span>
-            <button onClick={ButtonClick} type="submit">Submit</button>
-          </div>
-        </form>
-      )
-    }*/
-
 
   export default Income;
