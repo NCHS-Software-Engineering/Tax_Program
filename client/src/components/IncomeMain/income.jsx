@@ -1,9 +1,11 @@
 //import logo from '../images/logo.png';
+import {withRouter} from 'react-router'
 import React, { useState, useEffect } from "react";
 import './income.css';
 
-function Income(err, Result, Fields) {
+let count = 0
 
+function Income(err, Result, Fields) {
   const [getTaxes, setTaxes] = useState([])
 
   const baseURL = "http://localhost:2200/";
@@ -23,7 +25,7 @@ function Income(err, Result, Fields) {
   const [getTax, setTax] = useState('');
 
   function Tax(props){
-
+    
       let Minimums = []
       let Maximums = []
       let Head = []
@@ -54,13 +56,18 @@ function Income(err, Result, Fields) {
 
      if(getStatus === "Head"){
       if(inc < 100000){
-        while(inc > Maximums[i])
+        while(inc >= Maximums[i])
         {
-          i+= 1
+          i+=1
           x = Head[i]
+        
         }
-          setTax(x)
-
+        changeBackgroundColor(Minimums[i])
+        if(i>6)
+          window.location = "http://localhost:3000/" + "#tax" + Minimums[i-3]
+        else
+          window.location = "http://localhost:3000/" + "#tax" + Minimums[i]
+        setTax(x)
         }
       else if(inc < 182100){
         setTax(inc*.24 -8206)
@@ -77,11 +84,16 @@ function Income(err, Result, Fields) {
      }
     else if(getStatus === "Single"){
       if(inc < 100000){
-        while(inc > Maximums[i])
+        while(inc >= Maximums[i])
         {
           i+= 1
           x = Single[i]
         }
+        changeBackgroundColor(Minimums[i])
+        if(i>6)
+          window.location = "http://localhost:3000/" + "#tax" + Minimums[i-3]
+        else
+          window.location = "http://localhost:3000/" + "#tax" + Minimums[i]
           setTax(x)
       }
           else if(inc < 182100){
@@ -100,11 +112,16 @@ function Income(err, Result, Fields) {
     }
     else if(getStatus === "Jointly"){
       if(inc < 100000){
-        while(inc > Maximums[i])
+        while(inc >= Maximums[i])
         {
           i+= 1
           x = Jointly[i]
         }
+        changeBackgroundColor(Minimums[i])
+        if(i>6)
+          window.location = "http://localhost:3000/" + "#tax" + Minimums[i-3]
+        else
+          window.location = "http://localhost:3000/" + "#tax" + Minimums[i]
           setTax(x)
       }
           else if(inc < 190750){
@@ -125,11 +142,17 @@ function Income(err, Result, Fields) {
     }
     else if(getStatus === "Separately"){
       if(inc < 100000){
-        while(inc > Maximums[i])
+        while(inc >= Maximums[i])
         {
           i+= 1
           x = Seperate[i]
         }
+        changeBackgroundColor(Minimums[i])
+        if(i>6)
+          window.location = "http://localhost:3000/" + "#tax" + Minimums[i-3]
+        else
+          window.location = "http://localhost:3000/" + "#tax" + Minimums[i]
+          
           setTax(x)
       }
           else if(inc < 182100){
@@ -145,6 +168,7 @@ function Income(err, Result, Fields) {
             setTax(inc*.37 - 35043)
           }
     }
+    
   
   }
 
@@ -160,10 +184,11 @@ function Income(err, Result, Fields) {
             <br></br>
             <br></br>
             <Tax getTaxes = {getTaxes}/>
-            <p1>Your tax amount is {getTax}$</p1>
+            <p1>Your tax amount is ${getTax.toLocaleString()}</p1>
 
         </body>
           <header className="Income-header">
+            
           <div className = "Tax-brackets">
             <table> 
             <thead>
@@ -241,32 +266,38 @@ function Income(err, Result, Fields) {
       )
   }
 
-  /*function IncomeForm(props){
-    const[getI, setI] = useState()
-    const IValue = (e) => setI(e.target.value);
+  let numbers = []
+  let count2 = 0
 
-      function ButtonClick(e){
-          e.preventDefault()
-          alert("Thanks for submitting!")
-          props.setIncome(getI)
-          setI("")
-      } 
-        return(
-      <form name = 'income'>
-          <div>
-            <label> What is your annual income (0-100k):</label>
-            <input value={getI} onChange={IValue}
-              type="number"
-              name="income"
-              min="0"
-              max="100000"
-              required />
-            <span class="validity"></span>
-            <button onClick={ButtonClick} type="submit">Submit</button>
-          </div>
-        </form>
-      )
-    }*/
+  function changeBackgroundColor(number) {
+    
+    
+    let color = "#FFBF00"
+        
+    var x = document.querySelector('table');
+    x.querySelector("#tax"+number).style.backgroundColor = color;
+  
+    
+    if(count2 > 1){  
+      resetBackgroundColor(numbers[0])
+      numbers.shift()
+      console.log(numbers)
+      console.log(count2)
+      count2 = 1
+    }
+    count+= 1
+    if(count%4 == 0){
+      count2++
+      numbers.push(number)
+    }
+   
+  }
 
+    function resetBackgroundColor(number){
+      let color = "#28775d"
+
+      var x = document.querySelector('table');
+      x.querySelector("#tax"+number).style.backgroundColor = color;
+    }
 
   export default Income;
