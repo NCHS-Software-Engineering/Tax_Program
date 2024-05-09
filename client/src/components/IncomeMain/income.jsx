@@ -18,6 +18,29 @@ function Income(err, Result, Fields) {
   }, []);
 
 
+    let Minimums = []
+      let Maximums = []
+      let Head = []
+      let Single = []
+      let Seperate = []
+      let Jointly = []
+
+  const taxed = getTaxes.map(function(data, idx) {
+    return ([
+        <p key={idx}>{data.Min}</p>,
+        <p key={idx}>{data.Max}</p>,
+        <p key={idx}>{data.HeadHousehold}</p>,
+        <p key={idx}>{data.Single}</p>,
+        <p key={idx}>{data.MarriedSeperately}</p>,
+        <p key={idx}>{data.MarriedJointly}</p>,
+        Minimums.push(data.Min),
+        Maximums.push(data.Max),
+        Head.push(data.HeadHousehold),
+        Single.push(data.Single),
+        Seperate.push(data.MarriedSeperately),
+        Jointly.push(data.MarriedJointly)
+    ]);
+ });
 
   
   const [getIncome, setIncome] = useState('');  
@@ -25,30 +48,6 @@ function Income(err, Result, Fields) {
   const [getTax, setTax] = useState('');
 
   function Tax(props){
-    
-      let Minimums = []
-      let Maximums = []
-      let Head = []
-      let Single = []
-      let Seperate = []
-      let Jointly = []
-
-      const taxed = getTaxes.map(function(data, idx) {
-        return ([
-            <p key={idx}>{data.Min}</p>,
-            <p key={idx}>{data.Max}</p>,
-            <p key={idx}>{data.HeadHousehold}</p>,
-            <p key={idx}>{data.Single}</p>,
-            <p key={idx}>{data.MarriedSeperately}</p>,
-            <p key={idx}>{data.MarriedJointly}</p>,
-            Minimums.push(data.Min),
-            Maximums.push(data.Max),
-            Head.push(data.HeadHousehold),
-            Single.push(data.Single),
-            Seperate.push(data.MarriedSeperately),
-            Jointly.push(data.MarriedJointly)
-        ]);
-     });
 
      let x = 0
      let i = 0
@@ -173,7 +172,6 @@ function Income(err, Result, Fields) {
     }
   }
     
-  
   }
 
 
@@ -187,7 +185,7 @@ function Income(err, Result, Fields) {
             <StatusForm setStatus = {setStatus} setIncome = {setIncome}/>
             <br></br>
             <br></br>
-            <Tax getTaxes = {getTaxes}/>
+            <Tax/>
             <p1>Your tax amount is ${getTax.toLocaleString()}</p1>
 
         </body>
@@ -277,7 +275,6 @@ function Income(err, Result, Fields) {
 
   let numbers = []
   let count2 = 0
-  let PrevNum = 200000000
 
   function changeBackgroundColor(number) {
     
@@ -296,13 +293,14 @@ function Income(err, Result, Fields) {
       console.log(numbers)
       console.log(count2)
       count2 = 1
-      PrevNum = number
       }
 
     count += 1
     if(count%4 == 0){
-      count2++
-      numbers.push(number)
+      if(numbers[0] != number){
+        numbers.push(number)
+        count2++
+      }
     }
 
   
