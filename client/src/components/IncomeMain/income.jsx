@@ -18,6 +18,29 @@ function Income(err, Result, Fields) {
   }, []);
 
 
+    let Minimums = []
+      let Maximums = []
+      let Head = []
+      let Single = []
+      let Seperate = []
+      let Jointly = []
+
+  const taxed = getTaxes.map(function(data, idx) {
+    return ([
+        <p key={idx}>{data.Min}</p>,
+        <p key={idx}>{data.Max}</p>,
+        <p key={idx}>{data.HeadHousehold}</p>,
+        <p key={idx}>{data.Single}</p>,
+        <p key={idx}>{data.MarriedSeperately}</p>,
+        <p key={idx}>{data.MarriedJointly}</p>,
+        Minimums.push(data.Min),
+        Maximums.push(data.Max),
+        Head.push(data.HeadHousehold),
+        Single.push(data.Single),
+        Seperate.push(data.MarriedSeperately),
+        Jointly.push(data.MarriedJointly)
+    ]);
+ });
 
   
   const [getIncome, setIncome] = useState('');  
@@ -25,35 +48,12 @@ function Income(err, Result, Fields) {
   const [getTax, setTax] = useState('');
 
   function Tax(props){
-    
-      let Minimums = []
-      let Maximums = []
-      let Head = []
-      let Single = []
-      let Seperate = []
-      let Jointly = []
-
-      const taxed = getTaxes.map(function(data, idx) {
-        return ([
-            <p key={idx}>{data.Min}</p>,
-            <p key={idx}>{data.Max}</p>,
-            <p key={idx}>{data.HeadHousehold}</p>,
-            <p key={idx}>{data.Single}</p>,
-            <p key={idx}>{data.MarriedSeperately}</p>,
-            <p key={idx}>{data.MarriedJointly}</p>,
-            Minimums.push(data.Min),
-            Maximums.push(data.Max),
-            Head.push(data.HeadHousehold),
-            Single.push(data.Single),
-            Seperate.push(data.MarriedSeperately),
-            Jointly.push(data.MarriedJointly)
-        ]);
-     });
 
      let x = 0
      let i = 0
      let inc = getIncome
 
+     if(inc > 0){
      if(getStatus === "Head"){
       if(inc < 100000){
         while(inc >= Maximums[i])
@@ -62,6 +62,7 @@ function Income(err, Result, Fields) {
           x = Head[i]
         
         }
+        
         changeBackgroundColor(Minimums[i])
         if(i>6)
           window.location = "http://localhost:3000/" + "#tax" + Minimums[i-3]
@@ -90,11 +91,12 @@ function Income(err, Result, Fields) {
           x = Single[i]
         }
         changeBackgroundColor(Minimums[i])
+        setTax(x)
         if(i>6)
           window.location = "http://localhost:3000/" + "#tax" + Minimums[i-3]
         else
           window.location = "http://localhost:3000/" + "#tax" + Minimums[i]
-          setTax(x)
+          
       }
           else if(inc < 182100){
             setTax(inc*.24 -6600)
@@ -168,8 +170,8 @@ function Income(err, Result, Fields) {
             setTax(inc*.37 - 35043)
           }
     }
+  }
     
-  
   }
 
 
@@ -177,13 +179,13 @@ function Income(err, Result, Fields) {
 
       <body>
         <div className="Income">
-
+      
         <body className="Income-body">
             
             <StatusForm setStatus = {setStatus} setIncome = {setIncome}/>
             <br></br>
             <br></br>
-            <Tax getTaxes = {getTaxes}/>
+            <Tax/>
             <p1>Your tax amount is ${getTax.toLocaleString()}</p1>
 
         </body>
@@ -195,7 +197,7 @@ function Income(err, Result, Fields) {
             <tr> 
               <th>Minimum Income</th>
               <th>Maximum Income</th>
-              <th>Head of HouseHold</th>
+              <th>Head of Household</th>
               <th>Single</th>
               <th>Married Filing Seperately</th>
               <th>Married Filing Jointly</th>
@@ -233,6 +235,9 @@ function Income(err, Result, Fields) {
       function ButtonClick(e){
           e.preventDefault()
           props.setStatus(getS)
+          if(getI < 0){
+            alert("BAD")
+          }
           props.setIncome(getI)
           setS("")
           setI("")
@@ -254,10 +259,12 @@ function Income(err, Result, Fields) {
             <label>What is your household status?</label>
           <select value={getS} onChange={SValue}>
             <option value=""> </option>
-            <option value="Single">Single</option>
-            <option value="Jointly">Married filing jointly</option>
-            <option value="Separately">Married filing separately</option>
             <option value="Head">Head of Household</option>
+            <option value="Single">Single</option>
+            <option value="Separately">Married filing separately</option>
+            <option value="Jointly">Married filing jointly</option>
+          
+            
           </select>
           <button onClick={ButtonClick} id= "submit" type="submit" >Submit</button>
           </div>
@@ -279,18 +286,26 @@ function Income(err, Result, Fields) {
   
     
     if(count2 > 1){  
-      resetBackgroundColor(numbers[0])
+
+        resetBackgroundColor(numbers[0])
+    
       numbers.shift()
       console.log(numbers)
       console.log(count2)
       count2 = 1
-    }
-    count+= 1
+      }
+
+    count += 1
     if(count%4 == 0){
-      count2++
-      numbers.push(number)
+      if(numbers[0] != number){
+        numbers.push(number)
+        count2++
+      }
     }
-   
+
+  
+    console.log("count = " + count)
+
   }
 
     function resetBackgroundColor(number){
