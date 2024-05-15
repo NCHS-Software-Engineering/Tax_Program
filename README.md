@@ -9,7 +9,15 @@ All other calculations and table visualising tool will automatically change acco
 This program will work on any operating system that can run the latest version of ReactJS
 
 # Dependencies
-1. NPM
-2. ReactJS
+1. NodeJS
+2. NPM
+3. ReactJS
 
-# Installation
+# Linux Installation
+for Debian users (PiOs, etc.):
+1. Download our github file
+1. install and update npm using `sudo apt install nodejs npm && npm install create-react-app && npm upgrade`
+
+# Windows Installation
+1. Download our github file
+1. React only runs on Linux, so you might need something like VScode
