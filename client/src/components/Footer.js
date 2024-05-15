@@ -34,9 +34,9 @@ const Footer = () => {
 					<Column>
 						<Heading>Contact</Heading>
                         <FooterLink>
-							Mitchell Kaszuba: smkaszuba2@stu.naperville203.org <br/>
-							Matthew Scoles: msscoles@stu.naperville203.org <br/>
-							Guzal Rustamova: gurustamova@stu.naperville203.org <br/>
+							Mitchell Kaszuba '24: smkaszuba2@stu.naperville203.org <br/>
+							Matthew Scoles '24: msscoles@stu.naperville203.org <br/>
+							Guzal Rustamova '24: gurustamova@stu.naperville203.org <br/>
 					    </FooterLink> 
 					</Column>
 					<Column>
