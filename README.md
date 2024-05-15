@@ -1,3 +1,4 @@
+# Overview
 Tax App calculator is a helpful tool for consumer economics students filing the 1040 tax-form that need additional aid to calculate the tax they owe based on their income. 
 It can be used to visualize how a person can go about calculating their taxes using the tax table provided by the IRS. 
 Additionally, it can be used to verify their own work is correct. 
@@ -7,6 +8,8 @@ All other calculations and table visualising tool will automatically change acco
 
 This program will work on any operating system that can run the latest version of ReactJS
 
-Dependencies
+# Dependencies
 1. NPM
 2. ReactJS
+
+# Installation
