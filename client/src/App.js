@@ -3,6 +3,7 @@ import './App.css';
 import React from "react"; 
 import { useState, useEffect } from "react";
 import Income from './components/IncomeMain/income.jsx';
+import Footer from "./components/Footer.js";
 
 
 async function postData(url = "", data = {}) {
@@ -49,7 +50,15 @@ function App() {
               <Income />
             </div>
         
-         
+            <div
+                style={{
+                    minHeight: "250px",
+                    color: "green",
+                }}
+            >
+           
+            </div>
+            <Footer />
         </header>
       </div>
 
