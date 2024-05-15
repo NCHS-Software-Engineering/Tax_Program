@@ -191,7 +191,7 @@ function Income(err, Result, Fields) {
         </body>
           <header className="Income-header">
             
-          <div className = "Tax-brackets">
+          <div className = "Tax-brackets" tabIndex="0">
             <table> 
             <thead>
             <tr> 
@@ -246,7 +246,8 @@ function Income(err, Result, Fields) {
       return (
         <form>
           <div>
-          <label> What is your annual income (0-100k):</label>
+            <p className = ".spacing"></p>
+          <label for="Annual Income"> What is your annual income:</label>
             <input value={getI} onChange={IValue}
               type="number"
               name="income"
@@ -256,13 +257,13 @@ function Income(err, Result, Fields) {
             <span class="validity"></span>
             <br></br>
             <br></br>
-            <label>What is your household status?</label>
-          <select value={getS} onChange={SValue}>
-            <option value=""> </option>
-            <option value="Head">Head of Household</option>
-            <option value="Single">Single</option>
-            <option value="Separately">Married filing separately</option>
-            <option value="Jointly">Married filing jointly</option>
+            <label for = "Household Status">What is your household status?</label>
+          <select id = "Household_Status" value={getS} onChange={SValue}>
+            <option id = "blank" value=""></option>
+            <option id = "Head_of_Household" value="Head">Head of Household</option>
+            <option id = "Single" value="Single">Single</option>
+            <option id = "Married_Filing_Seperately" value="Separately">Married filing separately</option>
+            <option id = "Married_Filing_Jointly" value="Jointly">Married filing jointly</option>
           
             
           </select>
