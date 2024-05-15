@@ -49,19 +49,23 @@ function App() {
             <div>
               <Income />
             </div>
-
+        
             <div
                 style={{
-                    minHeight: "400px",
+                    minHeight: "250px",
                     color: "green",
                 }}
             >
-                <h1>GeeksforGeeks</h1>
+           
             </div>
             <Footer />
-         
         </header>
       </div>
+
+    
+    
+  );
+}
 
     
     

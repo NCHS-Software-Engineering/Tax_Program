@@ -3,7 +3,7 @@
 .Income {
   margin: 1rem;
   padding: 4rem 4rem;
- 
+  
   flex-direction: column;
 }
 
@@ -50,6 +50,7 @@
   }
 
   table {
+    
     border: 3px solid black;
     width: 500px; 
     height: 500px; 
@@ -59,15 +60,17 @@
     border-collapse: collapse;
   }
   table thead th { position: sticky; 
-    top: -0.25em; 
+    
+    top: -.25em; 
+
     z-index: 1; 
     background-color: #7ba294;
   
   .Tax-brackets{
     overflow: auto; 
     height: 1000px;
-  }
-  
+  }s
+
   th {
     justify-content: top;
     border: 2px solid black;
@@ -80,6 +83,8 @@
 }}
 
 .Income-body {
+  display:inline-block;
+  vertical-align: top;
   
   min-height: 50vh;
   display: flex;
@@ -89,7 +94,7 @@
   vertical-align: middle;
   width: 550px;
   font-size: calc(10px + 2vmin);
-  color: #7ba294;
+  color: black;
   padding: 8%;
 
   p1{
@@ -129,8 +134,11 @@
   text-align: center;
   justify-content: right;
   font-size: 25px;
-  width: 300px;
+  width: 320px;
   height: 50px;
+
+  
+
  }
 
  StatusForm{
@@ -140,7 +148,7 @@
  }
 
  button{
-  
+
   font-family: 'Playfair Display', serif;
   color: black; 
   height: 53px;

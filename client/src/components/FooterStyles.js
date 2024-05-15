@@ -34,7 +34,7 @@ export const Row = styled.div`
 	display: grid;
 	grid-template-columns: repeat(
 		auto-fill,
-		minmax(185px, 1fr)
+		minmax(500px, 1fr)
 	);
 	grid-gap: 20px;
 
@@ -52,10 +52,7 @@ export const FooterLink = styled.a`
 	font-size: 18px;
 	text-decoration: none;
 
-	&:hover {
-		color: green;
-		transition: 200ms ease-in;
-	}
+	
 `;
 
 export const Heading = styled.p`
