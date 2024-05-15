@@ -25,29 +25,34 @@ const Footer = () => {
 			<FooterContainer>
 				<Row>
                     <Column>
-                        <FooterLink href="">
-							Home
-					    </FooterLink>   
+						<Heading>About Us</Heading>
+                        <FooterLink >
+                        We are the Tax App Team, a group of students from Naperville Central High School who wanted to make an app to help students in Consumer Economics classes with the 1040 form
+					    </FooterLink>
+                        
                     </Column>
 					<Column>
-                        <FooterLink href="pages/About">
-							We are a group of ragtag people
+						<Heading>Contact</Heading>
+                        <FooterLink>
+							Mitchell Kaszuba: smkaszuba2@stu.naperville203.org <br/>
+							Matthew Scoles: msscoles@stu.naperville203.org <br/>
+							Guzal Rustamova: gurustamova@stu.naperville203.org <br/>
 					    </FooterLink> 
 					</Column>
 					<Column>
+						<Heading>Help</Heading>
 						<FooterLink >
-							Writing
-						</FooterLink>
-					</Column>
-					<Column>
-						<FooterLink >
-							please never contact us
+							1. Input for gross income <br/>
+							2. Input your marital status <br/>
+							3. Observe the amount you owe in taxes <br/>
 						</FooterLink>
 					</Column>
 					
 				</Row>
 			</FooterContainer>
+
 		</Box>
+        
 	);
 };
 export default Footer;
