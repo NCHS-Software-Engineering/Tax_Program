@@ -6,6 +6,7 @@ For people who would like to see a deeper analysis and breakdown of their taxes,
 To get started with the tax app, open the web application and begin following the given prompts and entering the information asked.
 All other calculations and table visualising tool will automatically change according to what the user enters. 
 
+# Compatibility
 This program will work on any operating system that can run the latest version of ReactJS
 
 # Dependencies
