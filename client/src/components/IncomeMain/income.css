@@ -7,9 +7,17 @@
   flex-direction: column;
 }
 
+#logo {
+  position: absolute;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
+}
+
+.App-header div {
+  margin-top: -25px;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -52,9 +60,8 @@
   table {
     
     border: 3px solid black;
-    width: 500px; 
+    width: 90vw; 
     height: 500px; 
-    float: right; 
     overflow: auto; 
     height: 1000px;
     border-collapse: collapse;
@@ -97,14 +104,19 @@
   color: black;
   padding: 8%;
 
-  p1{
+  #incomeStatement{
     flex: 2;
 
     font-family: 'Playfair Display', serif;
    
-    
+    color: white;
     font-size: 40px;
   }
+
+  #incomeStatement span {
+    color: #FFBF00;
+  }
+
   label{
     flex: 3;
 
@@ -153,7 +165,8 @@
   color: black; 
   height: 50px;
   width: 75px;
-  
+  top:-5px;
+  position: relative;
 }
 
 .spacing {

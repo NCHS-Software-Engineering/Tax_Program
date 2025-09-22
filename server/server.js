@@ -1,18 +1,24 @@
 const express = require('express');
 const cors = require('cors');
 const csvtojson = require('csvtojson'); 
+const dotenv = require("dotenv");
+var path    = require("path");
+
+dotenv.config({ path: ".env" });
 
 const app = express();
 app.use(cors());
 app.use(express.json());
+app.use(express.static(path.join(__dirname, 'public')));
 
 
-const mysql = require('mysql2'); 
+/*const mysql = require('mysql2');
+
 const connection = mysql.createConnection({
-  host: 'db.redhawks.us',
-  user: 'redhawks_tax', 
-  password: 'd2FPT24980y0',
-  database: 'redhawks_tax'
+  host: process.env.HOST,
+  user: process.env.DB_USER, 
+  password: process.env.PASS,
+  database: process.env.DB
 });
 connection.connect((err) => 
 {
@@ -72,18 +78,26 @@ connection.connect(function(err) {
 }); 
 
 */
-app.get('/', (req, res) => {
+
+
+
+app.get('/data', (req, res) => {
     const sql = 'SELECT Min, Max, HeadHousehold, Single, MarriedSeperately, MarriedJointly FROM Tax'; 
-    connection.query(sql, (err, data) => {
-        if (err) return res.json(err);  
-        return res.json(data); 
+    connection.query(sql, (err, data) => { 
+      if (err) 
+        return res.json(err);
+      return res.json(data);
       })
 })
 
+app.get('/', function (req, res) {
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
 
 
-app.listen(2200, () => {
-    console.log(`Server running on port 2200.`)
+
+app.listen(process.env.PORT, () => {
+    console.log(`Server running on port `+process.env.PORT)
 })
 
 /*https://www.irs.gov/pub/irs-prior/i1040tt--2023.pdf*/

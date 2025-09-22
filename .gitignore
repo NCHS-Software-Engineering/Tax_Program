@@ -22,3 +22,6 @@
 
 # End of https://www.toptal.com/developers/gitignore/api/visualstudiocode
 
+server/node_modules/dotenv/CHANGELOG.md
+/server/node_modules
+/server/node_modules

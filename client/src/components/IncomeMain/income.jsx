@@ -8,7 +8,9 @@ let count = 0
 function Income(err, Result, Fields) {
   const [getTaxes, setTaxes] = useState([])
 
-  const baseURL = "http://localhost:2200/";
+  //const baseURL = "https://tax.redhawks.us:2200/data";
+  //const baseURL = "http://localhost:2200/data";
+  const baseURL = "./tables.json"
 
   useEffect(() => {
     fetch(`${baseURL}`)
@@ -25,14 +27,18 @@ function Income(err, Result, Fields) {
       let Seperate = []
       let Jointly = []
 
+      function numberWithCommas(x) {
+        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
+
   const taxed = getTaxes.map(function(data, idx) {
     return ([
         <p key={idx}>{data.Min}</p>,
         <p key={idx}>{data.Max}</p>,
-        <p key={idx}>{data.HeadHousehold}</p>,
         <p key={idx}>{data.Single}</p>,
-        <p key={idx}>{data.MarriedSeperately}</p>,
         <p key={idx}>{data.MarriedJointly}</p>,
+        <p key={idx}>{data.MarriedSeperately}</p>,
+        <p key={idx}>{data.HeadHousehold}</p>,
         Minimums.push(data.Min),
         Maximums.push(data.Max),
         Head.push(data.HeadHousehold),
@@ -63,11 +69,11 @@ function Income(err, Result, Fields) {
         
         }
         
-        changeBackgroundColor(Minimums[i])
+        changeBackgroundColor(Minimums[i], getStatus)
         if(i>6)
-          window.location = "http://localhost:3000/" + "#tax" + Minimums[i-3]
+          window.location = "https://tax.redhawks.us/" + "#tax" + Minimums[i-3]
         else
-          window.location = "http://localhost:3000/" + "#tax" + Minimums[i]
+          window.location = "https://tax.redhawks.us/" + "#tax" + Minimums[i]
         setTax(x)
         }
       else if(inc < 182100){
@@ -90,12 +96,12 @@ function Income(err, Result, Fields) {
           i+= 1
           x = Single[i]
         }
-        changeBackgroundColor(Minimums[i])
+        changeBackgroundColor(Minimums[i], getStatus)
         setTax(x)
         if(i>6)
-          window.location = "http://localhost:3000/" + "#tax" + Minimums[i-3]
+          window.location = "https://tax.redhawks.us/" + "#tax" + Minimums[i-3]
         else
-          window.location = "http://localhost:3000/" + "#tax" + Minimums[i]
+          window.location = "https://tax.redhawks.us/" + "#tax" + Minimums[i]
           
       }
           else if(inc < 182100){
@@ -119,11 +125,11 @@ function Income(err, Result, Fields) {
           i+= 1
           x = Jointly[i]
         }
-        changeBackgroundColor(Minimums[i])
+        changeBackgroundColor(Minimums[i],getStatus)
         if(i>6)
-          window.location = "http://localhost:3000/" + "#tax" + Minimums[i-3]
+          window.location = "https://tax.redhawks.us/" + "#tax" + Minimums[i-3]
         else
-          window.location = "http://localhost:3000/" + "#tax" + Minimums[i]
+          window.location = "https://tax.redhawks.us/" + "#tax" + Minimums[i]
           setTax(x)
       }
           else if(inc < 190750){
@@ -149,11 +155,11 @@ function Income(err, Result, Fields) {
           i+= 1
           x = Seperate[i]
         }
-        changeBackgroundColor(Minimums[i])
+        changeBackgroundColor(Minimums[i], getStatus)
         if(i>6)
-          window.location = "http://localhost:3000/" + "#tax" + Minimums[i-3]
+          window.location = "https://tax.redhawks.us/" + "#tax" + Minimums[i-3]
         else
-          window.location = "http://localhost:3000/" + "#tax" + Minimums[i]
+          window.location = "https://tax.redhawks.us/" + "#tax" + Minimums[i]
           
           setTax(x)
       }
@@ -177,18 +183,17 @@ function Income(err, Result, Fields) {
 
     return (
 
-      <body>
         <div className="Income">
       
-        <body className="Income-body">
+        <div className="Income-body">
             
             <StatusForm setStatus = {setStatus} setIncome = {setIncome}/>
             <br></br>
             <br></br>
             <Tax/>
-            <p1>Your tax amount is ${getTax.toLocaleString()}</p1>
+            <p id="incomeStatement">Your tax amount is $<span>{getTax.toLocaleString()}</span></p>
 
-        </body>
+        </div>
           <header className="Income-header">
             
           <div className = "Tax-brackets" tabIndex="0">
@@ -197,22 +202,24 @@ function Income(err, Result, Fields) {
             <tr> 
               <th>Minimum Income</th>
               <th>Maximum Income</th>
-              <th>Head of Household</th>
+              <th></th>
               <th>Single</th>
-              <th>Married Filing Seperately</th>
               <th>Married Filing Jointly</th>
+              <th>Married Filing Seperately</th>
+              <th>Head of Household</th>
             </tr>
             </thead>
             <tbody>
             {
               getTaxes.map((income, index) => (
               <tr key={index} id = {"tax" + income.Min}>
-                <td> {income.Min} </td>
-                <td> {income.Max} </td>
-                <td> {income.HeadHousehold} </td>
-                <td> {income.Single} </td>
-                <td> {income.MarriedSeperately} </td>
-                <td> {income.MarriedJointly} </td>
+                <td> {numberWithCommas(income.Min)} </td>
+                <td> {numberWithCommas(income.Max)} </td>
+                <td> </td>
+                <td> {numberWithCommas(income.Single)} </td>
+                <td> {numberWithCommas(income.MarriedJointly)} </td>
+                <td> {numberWithCommas(income.MarriedSeperately)} </td>
+                <td> {numberWithCommas(income.HeadHousehold)} </td>
               </tr>
             ))}
             </tbody>
@@ -221,7 +228,6 @@ function Income(err, Result, Fields) {
           </header>
          
         </div>
-      </body>
     );
   }
 
@@ -246,13 +252,13 @@ function Income(err, Result, Fields) {
       return (
         <form>
           <div>
-            <p className = ".spacing"></p>
-          <label for="Annual Income"> What is your annual income:</label>
+          <label for="Annual Income"> What is your annual income?</label>
             <input value={getI} onChange={IValue}
               type="number"
               name="income"
               min="0"
               max="100000"
+              step="500"
               required />
             <span class="validity"></span>
             <br></br>
@@ -260,10 +266,10 @@ function Income(err, Result, Fields) {
             <label for = "Household Status">What is your household status?</label>
           <select id = "Household_Status" value={getS} onChange={SValue}>
             <option id = "blank" value=""></option>
-            <option id = "Head_of_Household" value="Head">Head of Household</option>
             <option id = "Single" value="Single">Single</option>
-            <option id = "Married_Filing_Seperately" value="Separately">Married filing separately</option>
-            <option id = "Married_Filing_Jointly" value="Jointly">Married filing jointly</option>
+            <option id = "Married_Filing_Jointly" value="Jointly">Married Filing Jointly</option>
+            <option id = "Married_Filing_Seperately" value="Separately">Married Filing Separately</option>
+            <option id = "Head_of_Household" value="Head">Head of Household</option>
           
             
           </select>
@@ -277,22 +283,30 @@ function Income(err, Result, Fields) {
   let numbers = []
   let count2 = 0
 
-  function changeBackgroundColor(number) {
+  function changeBackgroundColor(number, status) {
     
     
     let color = "#FFBF00"
         
     var x = document.querySelector('table');
     x.querySelector("#tax"+number).style.backgroundColor = color;
-  
+    
+    if (status == "Head")
+      x.querySelector("#tax"+number+" td:nth-child(7)").style.backgroundColor = "red";
+    else if (status == "Single")
+      x.querySelector("#tax"+number+" td:nth-child(4)").style.backgroundColor = "red";
+    else if (status == "Separately")
+      x.querySelector("#tax"+number+" td:nth-child(6)").style.backgroundColor = "red";
+    else if (status == "Jointly")
+      x.querySelector("#tax"+number+" td:nth-child(5)").style.backgroundColor = "red";
     
     if(count2 > 1){  
 
         resetBackgroundColor(numbers[0])
     
       numbers.shift()
-      console.log(numbers)
-      console.log(count2)
+      //console.log(numbers)
+      //console.log(count2)
       count2 = 1
       }
 
@@ -305,7 +319,7 @@ function Income(err, Result, Fields) {
     }
 
   
-    console.log("count = " + count)
+    //console.log("count = " + count)
 
   }
 
@@ -314,6 +328,10 @@ function Income(err, Result, Fields) {
 
       var x = document.querySelector('table');
       x.querySelector("#tax"+number).style.backgroundColor = color;
+      x.querySelector("#tax"+number+" td:nth-child(4)").style.backgroundColor = color;
+      x.querySelector("#tax"+number+" td:nth-child(5)").style.backgroundColor = color;
+      x.querySelector("#tax"+number+" td:nth-child(6)").style.backgroundColor = color;
+      x.querySelector("#tax"+number+" td:nth-child(7)").style.backgroundColor = color;
     }
 
   export default Income;
